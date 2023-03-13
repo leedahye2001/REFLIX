@@ -1,5 +1,5 @@
 import { Component } from "react";
-import mainMovie from "../img/pexels-ron-lach-9808087.mp4";
+import mainMovie from "../img/movie.png";
 import mainLogo from "../img/RE_FLIX.png";
 
 class Home extends Component {

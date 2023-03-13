@@ -1,5 +1,5 @@
 import { Component } from "react";
-import loginBG from "../img/production ID_5157555.mp4";
+import loginBG from "../img/kids.png";
 
 class SignUp extends Component {
   render() {

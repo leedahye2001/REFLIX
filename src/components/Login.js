@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 // import { loginUser } from "../../../_actions/user_action";
-import loginBG from "../img/production ID_5157555.mp4";
+import loginBG from "../img/kids.png";
 
 const Login = () => {
-  const dispatch = useDispatch();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
 

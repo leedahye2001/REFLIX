@@ -5,15 +5,15 @@ const New = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const onSubmit = () => {
-    axios
-      .post("/new", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        email: title,
-        password: body,
-      })
-      .then((response) => console.log(response));
+    // axios
+    //   .post("/new", {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     email: title,
+    //     password: body,
+    //   })
+    //   .then((response) => console.log(response));
   };
   return (
     <div>
