@@ -1,6 +1,6 @@
 import { Component } from "react";
-import mainMovie from "../img/movie.png";
-import mainLogo from "../img/RE_FLIX.png";
+import mainMovie from "../assets/images/movie.mp4";
+import mainLogo from "../assets/images/RE_FLIX.png";
 
 class Home extends Component {
   render() {

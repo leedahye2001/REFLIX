@@ -1,6 +1,5 @@
 import { useState } from "react";
-// import { loginUser } from "../../../_actions/user_action";
-import loginBG from "../img/kids.png";
+import loginBG from "../assets/images/kids.mp4";
 
 const Login = () => {
   const [Email, setEmail] = useState("");

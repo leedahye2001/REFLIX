@@ -1,6 +1,6 @@
 import { Component, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../img/RE_FLIX.png";
+import Logo from "../assets/images/RE_FLIX.png";
 
 const NavBar = () => {
   // const [loginToggle, setLoginToggle] = useState(false);
@@ -10,9 +10,9 @@ const NavBar = () => {
 
   return (
     <nav className="px-20 py-5 bg-black border-gray-200 px-3 sm:px-7">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
+      <div className="container flex flex-wrap justify-between mx-auto">
         <Link to="/" className="flex items-center">
-          <img src={Logo} className="h-6 sm:h-10" alt="REFLIX Logo" />
+          <img src={Logo} className="w-6 sm:w-10" alt="REFLIX Logo" />
         </Link>
         <div class="flex md:order-2">
           <a href="/login">
