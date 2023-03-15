@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
 
 class SignUp extends Component {
@@ -169,12 +170,12 @@ class SignUp extends Component {
 
           <div className="pt-4 sm:pt-6 flex items-center text-sm sm:text-base ml-[65px] sm:ml-[125px]">
             <p className="text-white">이미 계정이 있으신가요?</p>
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="ml-4 font-semibold text-[#F57B00] hover:text-orange-700"
             >
               로그인
-            </a>
+            </Link>
           </div>
         </div>
       </div>

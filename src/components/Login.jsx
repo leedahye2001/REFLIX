@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
 
 const Login = () => {
@@ -29,18 +30,24 @@ const Login = () => {
   // };
 
   return (
-    <div>
-      <div className="bg-black">
+    <div className="flex grid items-center">
+      <div className="relative bg-black justify-center align-center">
         <video
           src={loginBG}
-          className="opacity-30 sm:visible w-full h-[752px] object-cover"
+          className="opacity-30 laptop:visible w-full h-[752px] object-cover"
           autoPlay
           loop
           muted
           playbackRate="0.8"
         />
       </div>
-      <div className="absolute top-[130px] sm:top-40 px-[23px] sm:px-[10%] md:px-[25%] xl:px-[35%] w-full h-2/3 items-center align-middle">
+      <div
+        className="text-center flex-cols z-1
+        absolute
+        top-[20%]
+        ml-[25%]
+        mr-[25%]"
+      >
         <br />
         <p className="font-bold text-[#F57B00] text-4xl sm:text-5xl">LOGIN</p>
         <br />
@@ -125,21 +132,21 @@ const Login = () => {
         </div>
 
         {/* 비번 분실 */}
-        <a href="/lost" className="ml-[105px] sm:ml-[170px]">
+        <Link to="/lost" className="ml-[105px] sm:ml-[170px]">
           <span className="text-[#F57B00] hover:text-orange-700 font-semibold text-sm sm:text-base">
             비밀번호를 잊으셨나요?
           </span>
-        </a>
+        </Link>
 
         {/* 회원가입 */}
         <div className="pt-4 sm:pt-6 flex items-center text-sm sm:text-base ml-[40px] sm:ml-[100px] md:ml-[78px] lg:ml-[85px] xl:ml-[90px]">
           <p className="text-white">아직 RE:FLIX 회원이 아니신가요?</p>
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             className="ml-4 font-semibold text-[#F57B00] hover:text-orange-700"
           >
             회원가입
-          </a>
+          </Link>
         </div>
       </div>
     </div>
