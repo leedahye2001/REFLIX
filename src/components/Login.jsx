@@ -1,33 +1,53 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { loginUser } from "../apis/user";
+import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
+import { UserDispatchContext } from "../context/context";
 
 const Login = () => {
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
 
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
+  const dispatch = useContext(UserDispatchContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    loginUser(id, password).then((response) => {
+      const user = response;
+      console.log(response);
+
+      if (response.tokens.access_token) {
+        localStorage.setItem("token", response.tokens.access_token);
+      }
+
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          id: user.id,
+          email: user.email,
+        },
+      });
+
+      setTimeout(() => {}, 500);
+
+      window.alert("성공적으로 로그인 되었습니다 !");
+      navigate("/");
+    });
   };
 
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
+  const handleIdInput = (e) => {
+    setId(e.target.value);
   };
 
-  // const onSubmitHandler = (event) => {
-  //   // 버튼만 누르면 리로드 되는것을 막아줌
-  //   event.preventDefault();
+  const handlePwInput = (e) => {
+    setPassword(e.target.value);
+  };
 
-  //   console.log("Email", Email);
-  //   console.log("Password", Password);
-
-  //   let body = {
-  //     email: Email,
-  //     password: Password,
-  //   };
-
-  //   dispatch(loginUser(body));
-  // };
+  const handleEnter = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
+  };
 
   return (
     <div className="flex grid items-center">
@@ -68,11 +88,13 @@ const Login = () => {
           </div>
           <input
             type="text"
-            id={Email}
-            onChange={onEmailHandler}
+            id="id"
+            name="id"
+            onChange={handleIdInput}
             class="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-md 
                     focus:ring-orange-500 focus:border-blue-500 block w-[345px] sm:w-[500px] h-[45px] sm:h-[50px] p-3 pl-[50px]"
             placeholder="Email"
+            required
           />
         </div>
 
@@ -96,8 +118,10 @@ const Login = () => {
           </div>
           <input
             type="password"
-            id={Password}
-            onChange={onPasswordHandler}
+            id="password"
+            name="password"
+            onKeyDown={handleEnter}
+            onChange={handlePwInput}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm sm:text-base rounded-md
                     focus:ring-blue-500 focus:border-blue-500 block w-[345px] sm:w-[500px] h-[45px] sm:h-[50px] p-3 pl-[50px]"
             placeholder="Password"
@@ -108,7 +132,7 @@ const Login = () => {
         {/* 로그인 버튼 */}
         <button
           type="button"
-          formAction=""
+          onClick={handleLogin}
           className="mt-[30px] w-[345px] sm:w-[500px] text-white bg-[#F57B00] sm:bg-[#F57B00] hover:bg-orange-700
                       font-semibold rounded-md text-md sm:text-xl px-10 py-3 sm:py-4 text-center"
         >
@@ -132,14 +156,14 @@ const Login = () => {
         </div>
 
         {/* 비번 분실 */}
-        <Link to="/lost" className="ml-[105px] sm:ml-[170px]">
+        <Link to="/lost" className="">
           <span className="text-[#F57B00] hover:text-orange-700 font-semibold text-sm sm:text-base">
             비밀번호를 잊으셨나요?
           </span>
         </Link>
 
         {/* 회원가입 */}
-        <div className="pt-4 sm:pt-6 flex items-center text-sm sm:text-base ml-[40px] sm:ml-[100px] md:ml-[78px] lg:ml-[85px] xl:ml-[90px]">
+        <div className="pt-4 flex items-center text-sm ml-[40px]">
           <p className="text-white">아직 RE:FLIX 회원이 아니신가요?</p>
           <Link
             to="/signup"
