@@ -64,20 +64,20 @@ const Login = () => {
       <div
         className="text-center flex-cols z-1
         absolute
-        top-[20%]
-        ml-[25%]
-        mr-[25%]"
+        top-[25%]
+        left-[50%]
+        -translate-x-1/2"
       >
         <br />
-        <p className="font-bold text-[#F57B00] text-4xl sm:text-5xl">LOGIN</p>
+        <p className="flex font-bold text-[#F57B00] text-5xl">LOGIN</p>
         <br />
 
         {/* 이메일 */}
-        <div class="relative mb-4 sm:mb-6">
+        <div class="relative mb-4">
           <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               aria-hidden="true"
-              class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+              class="w-5 h-5 text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +91,8 @@ const Login = () => {
             id="id"
             name="id"
             onChange={handleIdInput}
-            class="bg-white border border-gray-300 text-gray-900 text-sm sm:text-base rounded-md 
-                    focus:ring-orange-500 focus:border-blue-500 block w-[345px] sm:w-[500px] h-[45px] sm:h-[50px] p-3 pl-[50px]"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md 
+                    focus:ring-orange-500 focus:border-blue-500 block w-[345px] h-[45px] p-3 pl-[50px]"
             placeholder="Email"
             required
           />
@@ -122,8 +122,8 @@ const Login = () => {
             name="password"
             onKeyDown={handleEnter}
             onChange={handlePwInput}
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm sm:text-base rounded-md
-                    focus:ring-blue-500 focus:border-blue-500 block w-[345px] sm:w-[500px] h-[45px] sm:h-[50px] p-3 pl-[50px]"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md
+                    focus:ring-blue-500 focus:border-blue-500 block w-[345px] p-3 pl-[50px]"
             placeholder="Password"
             required
           />
@@ -133,8 +133,8 @@ const Login = () => {
         <button
           type="button"
           onClick={handleLogin}
-          className="mt-[30px] w-[345px] sm:w-[500px] text-white bg-[#F57B00] sm:bg-[#F57B00] hover:bg-orange-700
-                      font-semibold rounded-md text-md sm:text-xl px-10 py-3 sm:py-4 text-center"
+          className="mt-[30px] w-[345px] text-white bg-[#F57B00] hover:bg-orange-700
+                      font-semibold rounded-md text-md px-10 py-3 text-center"
         >
           로그인
         </button>
@@ -147,17 +147,14 @@ const Login = () => {
             value=""
             class="w-4 h-4 bg-gray-100 rounded-md border-gray-300 focus:ring-blue-500 focus:ring-2 "
           />
-          <label
-            for="default-checkbox"
-            class="ml-2 text-sm sm:text-base text-white"
-          >
+          <label for="default-checkbox" class="ml-2 text-sm text-white">
             로그인 정보 저장
           </label>
         </div>
 
         {/* 비번 분실 */}
         <Link to="/lost" className="">
-          <span className="text-[#F57B00] hover:text-orange-700 font-semibold text-sm sm:text-base">
+          <span className="text-[#F57B00] hover:text-orange-700 font-semibold text-sm">
             비밀번호를 잊으셨나요?
           </span>
         </Link>

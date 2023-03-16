@@ -24,12 +24,16 @@ const InputWrapper = styled.div`
   margin-bottom: 20px;
 
   span:nth-child(1) {
+    display: flex;
     color: white;
+    font-weight: 600;
+    font-size: 18px;
   }
   span:nth-child(2) {
-    margin-left: 10px;
+    display: flex;
+    margin-bottom: 5px;
     font-size: 12px;
-    color: ${(props) => (props.isChecked ? "#009000" : "#ff0000")};
+    color: ${(props) => (props.isChecked ? "white" : "#ff0000")};
   }
   input {
     /* width: 80%;
@@ -56,7 +60,7 @@ const InputIdWrapper = styled.div`
     border: 0px;
     text-align: end;
     margin-block: auto;
-    color: ${(props) => (props.idChecked ? "#009000" : "#ff0000")};
+    color: ${(props) => (props.idChecked ? "white" : "#ff0000")};
     font-size: 12px;
     background-color: #ffff;
     cursor: pointer;
@@ -140,11 +144,11 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <div className="bg-black">
+    <div className="flex grid items-center">
+      <div className="relative bg-black justify-center align-center">
         <video
           src={loginBG}
-          className="opacity-30 sm:visible w-full h-[752px] object-cover"
+          className="opacity-30 laptop:visible w-full h-[1000px] object-cover"
           autoPlay
           loop
           muted
@@ -152,19 +156,21 @@ const SignUp = () => {
         />
       </div>
       <div
-        className="border-white absolute top-[100px] sm:top-[120px] px-[23px]
-        sm:px-[10%] md:px-[25%] xl:px-[35%] w-full h-2/3
-        items-center align-middle"
+        className="text-center flex-cols z-1
+        absolute
+        top-[25%]
+        left-[50%]
+        -translate-x-1/2"
       >
         <br />
-        <p className="font-bold text-[#F57B00] text-4xl sm:text-5xl">SIGN UP</p>
+        <p className="flex font-bold text-[#F57B00] text-5xl">SIGN UP</p>
         <br />
 
         <Block>
           <InputWrapper isChecked={idChecked}>
             <span>이메일</span>
             <span>ex@reflix.com</span>
-            <div class="relative mb-4 sm:mb-6">
+            <div class="relative mb-4">
               <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +178,7 @@ const SignUp = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+                  className="w-5 h-5 text-gray-400"
                 >
                   <path
                     strokeLinecap="round"
@@ -203,7 +209,7 @@ const SignUp = () => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+                  class="w-5 h-5 text-gray-400"
                 >
                   <path
                     stroke-linecap="round"
@@ -232,7 +238,7 @@ const SignUp = () => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+                  class="w-5 h-5 text-gray-400"
                 >
                   <path
                     stroke-linecap="round"
@@ -253,7 +259,7 @@ const SignUp = () => {
           <InputWrapper isChecked={pwCheckChecked}>
             <span>비밀번호 확인</span>
             <span>위에 입력한 비밀번호와 동일</span>
-            <div class="relative mb-4 sm:mb-6">
+            <div class="relative mb-4">
               <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -283,13 +289,13 @@ const SignUp = () => {
         <button
           type="button"
           onClick={handleSignup}
-          className="mt-[30px] w-[345px] sm:w-[500px] text-white bg-[#F57B00] sm:bg-[#F57B00] hover:bg-orange-700
-                      font-semibold rounded-md text-md sm:text-xl px-10 py-4 text-center"
+          className="mt-[30px] w-[400px] text-white bg-[#F57B00] hover:bg-orange-700
+                      font-semibold rounded-md text-md px-10 py-4 text-center"
         >
           가입하기
         </button>
 
-        <div className="pt-4 sm:pt-6 flex items-center text-sm sm:text-base ml-[65px] sm:ml-[125px]">
+        <div className="pt-4 flex items-center text-sm  ml-[90px]">
           <p className="text-white">이미 계정이 있으신가요?</p>
           <Link
             to="/login"

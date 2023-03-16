@@ -19,13 +19,13 @@ const Home = () => {
   // const items = params.id;
   // const [data, setData] = useState(null);
 
-  fetch(`http://localhost:5000/items`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+  // fetch(`http://localhost:5000/items`)
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
 
   // useEffect(() => {
   //   load(items).then((data) => setProduct(data));
