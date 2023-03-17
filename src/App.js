@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
+import Footer from "./components/nav/Footer";
 import ContentDetail from "./pages/ContentDetail";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/contentdetail" element={<ContentDetail />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };
