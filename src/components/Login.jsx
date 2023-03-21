@@ -16,8 +16,8 @@ const Login = () => {
       const user = response;
       console.log(response);
 
-      if (response.tokens.access_token) {
-        localStorage.setItem("token", response.tokens.access_token);
+      if (response.access_token) {
+        localStorage.setItem("token", response.access_token);
       }
 
       dispatch({
@@ -91,15 +91,15 @@ const Login = () => {
             id="id"
             name="id"
             onChange={handleIdInput}
-            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md 
-                    focus:ring-orange-500 focus:border-blue-500 block w-[345px] h-[45px] p-3 pl-[50px]"
+            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-md 
+                    block focus:outline-0 w-[345px] h-[45px] p-3 pl-[50px]"
             placeholder="Email"
             required
           />
         </div>
 
         {/* 비밀번호 입력 */}
-        <div class="relative mb-4 sm:mb-5">
+        <div class="relative mb-4">
           <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +122,8 @@ const Login = () => {
             name="password"
             onKeyDown={handleEnter}
             onChange={handlePwInput}
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md
-                    focus:ring-blue-500 focus:border-blue-500 block w-[345px] p-3 pl-[50px]"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md
+                    focus:outline-0 block w-[345px] p-3 pl-[50px]"
             placeholder="Password"
             required
           />

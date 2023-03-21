@@ -40,7 +40,6 @@ const FooterWrapper = styled.div`
 const LinkToGitWrapper = styled.div`
   font-size: 12px;
   margin-top: 20px;
-  /* background-color: antiquewhite; */
 
   @media (max-width: 690px) {
     flex-direction: row;

@@ -3,34 +3,7 @@ import { useParams } from "react-router-dom";
 import mainMovie from "../assets/images/movie.mp4";
 import mainLogo from "../assets/images/RE_FLIX.png";
 
-// async function load() {
-//   return fetch("./test.json")
-//     .then((res) => console.log(res))
-//     .then((json) => console.log(json));
-// }
-
-// load().then((items) => {
-//   console.log(items);
-// });
-
 const Home = () => {
-  // const [product, setProduct] = useState();
-  // const params = useParams();
-  // const items = params.id;
-  // const [data, setData] = useState(null);
-
-  // fetch(`http://localhost:5000/items`)
-  //   .then((res) => {
-  //     return res.json();
-  //   })
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-
-  // useEffect(() => {
-  //   load(items).then((data) => setProduct(data));
-  // }, [items]);
-
   return (
     <div>
       <div className="bg-black">
@@ -42,15 +15,11 @@ const Home = () => {
           muted
         />
       </div>
-      <div className="">
-        <div
-          className="ml-auto absolute top-[340px]
-        desktop:top-[450px]
-        h-1/2 items-center left-[50%]"
-        >
+      <div>
+        <div className="absolute top-[450px] laptop:top-[450px] items-center left-[10%] laptop:left-[50%]">
           <img
             src={mainLogo}
-            className="w-3/4 laptop:w-1/3 "
+            className="w-3/4 laptop:w-2/3 "
             alt="RE:FLIX logo"
           ></img>
           <br />
@@ -66,7 +35,7 @@ const Home = () => {
           </p>
           <button
             type="button"
-            className="mt-[55px] ml-[180px] 
+            className="mt-[55px]
               text-white bg-[#F57B00] hover:bg-orange-700
                       font-semibold rounded-md text-xl px-10 py-4 text-center"
           >
