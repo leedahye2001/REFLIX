@@ -120,6 +120,7 @@ const NavBar = () => {
     const logoutconfirm = window.confirm("로그아웃 하시겠습니까?");
     if (logoutconfirm) {
       localStorage.removeItem("token");
+      // localStorage.removeItem("refreshToken");
       dispatch({ type: "LOGOUT" });
       navigate("/");
     }
@@ -139,18 +140,6 @@ const NavBar = () => {
         <Link to="/" className="flex items-center">
           <img src={Logo} className="w-[40px]" alt="REFLIX Logo" />
         </Link>
-        {/* <div class="flex md:order-2">
-          <a href="/login">
-            <button
-              type="button"
-              className="text-black bg-white border-2 border-white hover:bg-black hover:text-white hover:border-2
-                        font-semibold rounded-full text-sm sm:px-5 sm:py-2.5 px-4 py-2 text-center"
-            >
-              로그인
-            </button>
-          </a>
-        </div> */}
-
         <NavButton
           onClick={() => {
             setIsButtonClicked((prev) => !prev);
@@ -159,17 +148,17 @@ const NavBar = () => {
           <AiOutlineMenu style={{}} />
         </NavButton>
         <NavMenu isButtonClicked={isButtonClicked}>
-          {/* {user?.id !== "" ? (
+          {user?.id !== "" ? (
             <>
               <li onClick={() => handleLogout()}> 로그아웃</li>
               <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
             </>
-          ) : ( */}
-          <>
-            <li onClick={() => handleNavigate("/login")}>로그인</li>
-            <li onClick={() => handleNavigate("/signup")}>회원가입</li>
-          </>
-          {/* )} */}
+          ) : (
+            <>
+              <li onClick={() => handleNavigate("/login")}>로그인</li>
+              <li onClick={() => handleNavigate("/signup")}>회원가입</li>
+            </>
+          )}
         </NavMenu>
       </div>
     </nav>

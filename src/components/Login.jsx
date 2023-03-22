@@ -5,26 +5,30 @@ import loginBG from "../assets/images/kids.mp4";
 import { UserDispatchContext } from "../context/context";
 
 const Login = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-
   const dispatch = useContext(UserDispatchContext);
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = () => {
-    loginUser(id, password).then((response) => {
+    loginUser(email, password).then((response) => {
       const user = response;
       console.log(response);
 
-      if (response.access_token) {
-        localStorage.setItem("token", response.access_token);
+      if (response.accessToken) {
+        localStorage.setItem("access-token", response.accessToken);
       }
+      // else if (response.refreshToken) {
+      //   localStorage.setItem("refreshToken", response.refreshToken);
+      // }
 
       dispatch({
         type: "LOGIN",
         payload: {
           id: user.id,
           email: user.email,
+          name: user.name,
         },
       });
 
@@ -36,7 +40,7 @@ const Login = () => {
   };
 
   const handleIdInput = (e) => {
-    setId(e.target.value);
+    setEmail(e.target.value);
   };
 
   const handlePwInput = (e) => {
@@ -58,7 +62,7 @@ const Login = () => {
           autoPlay
           loop
           muted
-          playbackRate="0.8"
+          // playbackRate="0.8"
         />
       </div>
       <div
@@ -73,11 +77,11 @@ const Login = () => {
         <br />
 
         {/* 이메일 */}
-        <div class="relative mb-4">
-          <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
+        <div className="relative mb-4">
+          <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               aria-hidden="true"
-              class="w-5 h-5 text-gray-400"
+              className="w-5 h-5 text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +92,8 @@ const Login = () => {
           </div>
           <input
             type="text"
-            id="id"
-            name="id"
+            id="email"
+            name="email"
             onChange={handleIdInput}
             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-md 
                     block focus:outline-0 w-[345px] h-[45px] p-3 pl-[50px]"
@@ -99,19 +103,19 @@ const Login = () => {
         </div>
 
         {/* 비밀번호 입력 */}
-        <div class="relative mb-4">
-          <div class="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
+        <div className="relative mb-4">
+          <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
               />
             </svg>
@@ -140,14 +144,17 @@ const Login = () => {
         </button>
 
         {/* 로그인 정보 저장 */}
-        <div class="pt-4 flex items-center mb-10 sm:mb-10">
+        <div className="pt-4 flex items-center mb-10 sm:mb-10">
           <input
             id="default-checkbox"
             type="checkbox"
             value=""
-            class="w-4 h-4 bg-gray-100 rounded-md border-gray-300 focus:ring-blue-500 focus:ring-2 "
+            className="hidden w-4 h-4 bg-gray-100 rounded-md border-gray-300 focus:ring-blue-500 focus:ring-2 "
           />
-          <label for="default-checkbox" class="ml-2 text-sm text-white">
+          <label
+            htmlFor="default-checkbox"
+            className="hidden ml-2 text-sm text-white"
+          >
             로그인 정보 저장
           </label>
         </div>

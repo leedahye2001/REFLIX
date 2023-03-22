@@ -5,13 +5,13 @@ const ContentDetail = () => {
     <>
       <div className="flex grid items-center">
         <div className="relative bg-black justify-center align-center px-10 laptop:px-20">
-          <div className="grid grid-cols-2 mx-auto laptop:w-[800px]">
+          <div className="grid grid-cols-1 mx-auto laptop:w-[800px]">
             <img
               src=""
-              className="bg-gray-200 w-[278px] h-[404px]"
+              className="bg-gray-200 w-[100%] h-[400px]"
               alt="content image"
             />
-            <div className="grid grid-rows-1">
+            <div className="grid grid-rows-1 ml-4">
               <h1 className="text-white text-3xl font-black pb-[10px]">
                 TITLE (YEAR)
               </h1>
@@ -34,9 +34,9 @@ const ContentDetail = () => {
                 <span className="text-[#999] text-base font-">2023.03.16.</span>
               </div>
               <div className="flex">
-                <p className="text-[#999] text-base font-bold pr-[10px]">
+                {/* <p className="text-[#999] text-base font-bold pr-[10px]">
                   별점
-                </p>
+                </p> */}
                 <BsStarFill color="#FADB14" className="mt-[4px]" />
                 <BsStarFill color="#FADB14" className="mt-[4px]" />
                 <BsStarFill color="#FADB14" className="mt-[4px]" />

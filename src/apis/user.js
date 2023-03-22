@@ -19,7 +19,7 @@ async function loginUser(email, password) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: localStorage.getItem("access-token"),
     },
     body: JSON.stringify({
       email,
@@ -36,7 +36,7 @@ async function loginUser(email, password) {
 }
 
 async function getUserByToken(token) {
-  return await fetch("/", {
+  return await fetch("/auth/login", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -7,6 +7,7 @@ export const UserDispatchContext = createContext();
 const initialUser = {
   id: "",
   email: "",
+  name: "",
 };
 
 function userReducer(state, action) {
