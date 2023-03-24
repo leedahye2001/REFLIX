@@ -10,6 +10,8 @@ import SignUp from "./components/SignUp";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
 import Footer from "./components/nav/Footer";
+import Profile from "./pages/Profile";
+import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
 import { ContextProvider } from "./context/context";
 
@@ -24,6 +26,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/contentdetail" element={<ContentDetail />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
         <Footer />
