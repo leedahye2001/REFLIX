@@ -10,11 +10,11 @@ export default function setHeaders(headers) {
   }
 }
 
-async function getContentDetail(productId) {
-  return await fetch(`/api/product/id?productId=${productId}`, {
-    headers: setHeaders({
+async function getContentDetail(ContentId) {
+  return await fetch(`/contents/detail?contentId=1`, {
+    headers: {
       "Content-Type": "application/json",
-    }),
+    },
     method: "GET",
   })
     .then((res) => res.json())

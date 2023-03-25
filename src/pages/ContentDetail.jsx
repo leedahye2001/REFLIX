@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsStarFill, BsStartHalf, BsStar } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { getContentDetail } from "../apis/content";
 
 const ContentDetail = () => {
   // const [playlist, setPlaylist] = useState([]);
@@ -19,67 +20,63 @@ const ContentDetail = () => {
 
   // console.log(playlist);
 
-  const [contents, setContents] = useState(null);
+  const [content, setContent] = useState();
+  const [contents, setContents] = useState([]);
+
   useEffect(() => {
-    const getContentDetail = async () => {
-      return await fetch(`/contents/submit`)
-        .then((res) => {
-          if (!res.ok) {
-            return new Promise.reject("no content found");
-          }
-          return res.json();
-        })
-        .then((list) => {
-          setContents(list);
-        })
-        .catch((err) => console.error(err));
-    };
-    getContentDetail();
+    getContentDetail().then((data) => setContent(data));
   }, []);
 
-  const ContentList = ({ contents }) => {
-    if (!contents) return;
-    return contents.map((content) => {
-      return (
-        <>
-          {content.year},{content.contentname}
-        </>
-      );
-    });
-  };
+  return content ? (
+    <ContentList content={content} contents={contents} />
+  ) : (
+    <h1>Loading</h1>
+  );
+
+  //  {content.contentsId},{content.contentName},{content.contentImageUrl},
+  //         {content.janre},{content.year},
+};
+
+const ContentList = (props) => {
+  const { content, contents } = props;
 
   return (
     <>
       <div className="flex grid items-center">
         <div className="relative bg-black justify-center align-center px-10 laptop:px-20">
           <div className="grid grid-cols-1 mx-auto laptop:w-[800px]">
-            <ContentList contents={contents} />
             <img
-              src=""
-              className="bg-gray-200 w-[100%] h-[400px]"
+              src={content.contentImageUrl}
+              className="bg-gray-200 w-[100%]"
               alt="content image"
             />
             <div className="grid grid-rows-1 ml-4">
               <h1 className="text-white text-3xl font-black pb-[10px]">
-                TITLE (YEAR)
+                {content.contentName} ({content.year})
               </h1>
               <div className="flex">
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   개요
                 </p>
-                <span className="text-[#999] text-base font-">장르 | 국가</span>
+                <span className="text-[#999] text-base font-">
+                  {content.janre} | {content.contentsCategory}
+                </span>
               </div>
               <div className="flex">
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   러닝타임
                 </p>
-                <span className="text-[#999] text-base font-">147분</span>
+                <span className="text-[#999] text-base font-">
+                  {content.runningTime} null
+                </span>
               </div>
               <div className="flex">
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   개봉
                 </p>
-                <span className="text-[#999] text-base font-">2023.03.16.</span>
+                <span className="text-[#999] text-base font-">
+                  {content.year}
+                </span>
               </div>
               <div className="flex">
                 {/* <p className="text-[#999] text-base font-bold pr-[10px]">
@@ -96,18 +93,7 @@ const ContentDetail = () => {
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   줄거리
                 </p>
-                <span className="text-[#999] text-base ">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </span>
+                <span className="text-[#999] text-base ">{content.story}</span>
               </div>
             </div>
           </div>

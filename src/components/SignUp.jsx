@@ -136,6 +136,7 @@ const SignUp = () => {
       //   setVisible(false);
       //   setUseFadeOut(false);
       // }, 500);
+      setTimeout(() => {}, 500);
 
       console.log("회원가입 !");
       window.alert("회원가입 되었습니다. 로그인 해주세요.");
