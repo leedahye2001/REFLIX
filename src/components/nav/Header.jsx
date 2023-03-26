@@ -1,6 +1,7 @@
 import {
   Component,
   useContext,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -10,6 +11,7 @@ import styled from "styled-components";
 import Logo from "../../assets/images/reflex_logo_trans.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { UserContext, UserDispatchContext } from "../../context/context";
+import { userInfo } from "../../apis/user";
 
 const NavButton = styled.button`
   @media (max-width: 690px) {
@@ -116,6 +118,26 @@ const NavBar = () => {
   const user = useContext(UserContext);
   const dispatch = useContext(UserDispatchContext);
 
+  const state = UserContext();
+  const dispatchUser = UserDispatchContext();
+
+  // const [info, setInfo] = useState();
+
+  // useEffect(() => {
+  //   userInfo().then((data) => setInfo(data));
+  // }, []);
+
+  const { data: users, loading, error } = state.users;
+  const [userId, setUserId] = useState(null);
+
+  // const fetchData = () => {
+  //   dispatch({ type: "LOGIN" });
+  // };
+
+  useLayoutEffect(() => {
+    setIsButtonClicked(false);
+  }, [location.pathname]);
+
   const handleLogout = () => {
     const logoutconfirm = window.confirm("로그아웃 하시겠습니까?");
     if (logoutconfirm) {
@@ -129,10 +151,6 @@ const NavBar = () => {
   const handleNavigate = (path) => {
     navigate(path);
   };
-
-  useLayoutEffect(() => {
-    setIsButtonClicked(false);
-  }, [location.pathname]);
 
   return (
     <nav className="px-20 py-5 bg-black border-gray-200 px-8 laptop:px-7">
@@ -148,8 +166,17 @@ const NavBar = () => {
           <AiOutlineMenu style={{}} />
         </NavButton>
         <NavMenu isButtonClicked={isButtonClicked}>
-          {user?.id !== "" ? (
+          {users?.email !== "" ? (
             <>
+              {users.map((user) => (
+                <li
+                  key={user.id}
+                  onClick={() => setUserId(user.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {user.username} ({user.name})
+                </li>
+              ))}
               <li onClick={() => handleLogout()}> 로그아웃</li>
               <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
             </>

@@ -2,18 +2,22 @@ import { useContext, useState } from "react";
 import { loginUser } from "../apis/user";
 import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
-import { UserDispatchContext } from "../context/context";
+import { UserDispatchContext, UserContext, getUsers } from "../context/context";
 
 const Login = () => {
+  // const state = UserContext();
   const dispatch = useContext(UserDispatchContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const { data: users, loading, error } = state.users;
+
   const handleLogin = () => {
     loginUser(email, password).then((response) => {
       const user = response;
+
       console.log(response);
 
       if (response.accessToken) {
@@ -23,6 +27,7 @@ const Login = () => {
       //   localStorage.setItem("refreshToken", response.refreshToken);
       // }
 
+      // getUsers(dispatch);
       dispatch({
         type: "LOGIN",
         payload: {
@@ -31,7 +36,6 @@ const Login = () => {
           name: user.name,
         },
       });
-
       setTimeout(() => {}, 500);
 
       window.alert("성공적으로 로그인 되었습니다 !");
