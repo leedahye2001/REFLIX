@@ -14,6 +14,21 @@ async function signupUser(email, password, name) {
     .then((data) => data);
 }
 
+async function updateUser(password, name) {
+  return await fetch("/user/update", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password,
+      name,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => data);
+}
+
 async function loginUser(email, password) {
   return await fetch("/auth/login", {
     method: "POST",
@@ -58,4 +73,4 @@ async function getUserByToken(token) {
     .then((data) => data);
 }
 
-export { signupUser, loginUser, getUserByToken };
+export { signupUser, loginUser, getUserByToken, updateUser };

@@ -151,9 +151,10 @@ const Header = () => {
         <NavMenu isButtonClicked={isButtonClicked}>
           {user ? (
             <>
-              <p>{user.userId}님</p>
+              <li>{user.userId}님</li>
               <li onClick={() => handleLogout()}> 로그아웃</li>
               <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
+              <li onClick={() => handleNavigate("/profile")}>프로필</li>
             </>
           ) : (
             <>

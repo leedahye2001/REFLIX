@@ -144,6 +144,7 @@ const SignUp = () => {
         user: {
           email,
           password,
+          name,
         },
       });
       setTimeout(() => {}, 500);
