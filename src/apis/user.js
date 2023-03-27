@@ -35,16 +35,16 @@ async function loginUser(email, password) {
     .then((data) => data);
 }
 
-async function userInfo(email, username) {
-  return await fetch(`/user/detail`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => data);
-}
+// async function userInfo(email, username) {
+//   return await fetch(`/user/detail`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => data);
+// }
 
 async function getUserByToken(token) {
   return await fetch("/auth/login", {
@@ -58,4 +58,4 @@ async function getUserByToken(token) {
     .then((data) => data);
 }
 
-export { signupUser, loginUser, getUserByToken, userInfo };
+export { signupUser, loginUser, getUserByToken };

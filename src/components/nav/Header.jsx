@@ -10,8 +10,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../assets/images/reflex_logo_trans.png";
 import { AiOutlineMenu } from "react-icons/ai";
-import { UserContext, UserDispatchContext } from "../../context/context";
-import { userInfo } from "../../apis/user";
+import { useUserDispatch, useUserState } from "../../context/context";
 
 const NavButton = styled.button`
   @media (max-width: 690px) {
@@ -109,30 +108,14 @@ const NavMenu = styled.ul`
   }
 `;
 
-const NavBar = () => {
+const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [isButtonClicked, setIsButtonClicked] = useState(false);
 
-  const user = useContext(UserContext);
-  const dispatch = useContext(UserDispatchContext);
-
-  const state = UserContext();
-  const dispatchUser = UserDispatchContext();
-
-  // const [info, setInfo] = useState();
-
-  // useEffect(() => {
-  //   userInfo().then((data) => setInfo(data));
-  // }, []);
-
-  const { data: users, loading, error } = state.users;
-  const [userId, setUserId] = useState(null);
-
-  // const fetchData = () => {
-  //   dispatch({ type: "LOGIN" });
-  // };
+  const { user } = useUserState();
+  const dispatch = useUserDispatch();
 
   useLayoutEffect(() => {
     setIsButtonClicked(false);
@@ -166,17 +149,9 @@ const NavBar = () => {
           <AiOutlineMenu style={{}} />
         </NavButton>
         <NavMenu isButtonClicked={isButtonClicked}>
-          {users?.email !== "" ? (
+          {user ? (
             <>
-              {users.map((user) => (
-                <li
-                  key={user.id}
-                  onClick={() => setUserId(user.id)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {user.username} ({user.name})
-                </li>
-              ))}
+              <p>{user.userId}님</p>
               <li onClick={() => handleLogout()}> 로그아웃</li>
               <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
             </>
@@ -192,4 +167,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Header;

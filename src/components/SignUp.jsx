@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
 import { signupUser } from "../apis/user";
 import styled from "styled-components";
+import { useUserDispatch } from "../context/context";
 
 const SignupBtn = styled.button`
   border: none;
@@ -88,6 +89,7 @@ const SelectWrapper = styled.div`
 
 const SignUp = () => {
   // input state
+  const dispatch = useUserDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -136,6 +138,14 @@ const SignUp = () => {
       //   setVisible(false);
       //   setUseFadeOut(false);
       // }, 500);
+
+      dispatch({
+        type: "CREATE_USER",
+        user: {
+          email,
+          password,
+        },
+      });
       setTimeout(() => {}, 500);
 
       console.log("회원가입 !");
