@@ -56,7 +56,10 @@ const NavMenu = styled.ul`
     font-size: 15px;
     padding: 0;
     z-index: 1;
-
+    p {
+      font-size: 16px;
+      color: white;
+    }
     li {
       display: flex;
       font-size: 16px;
@@ -81,7 +84,10 @@ const NavMenu = styled.ul`
     cursor: pointer;
     align-items: center;
     justify-content: center;
-
+    p {
+      font-size: 16px;
+      color: white;
+    }
     li:nth-child(odd) {
       color: black;
       background-color: white;
@@ -151,7 +157,7 @@ const Header = () => {
         <NavMenu isButtonClicked={isButtonClicked}>
           {user ? (
             <>
-              <li>{user.userId}님</li>
+              <p>{user.userId}님</p>
               <li onClick={() => handleLogout()}> 로그아웃</li>
               <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
               <li onClick={() => handleNavigate("/profile")}>프로필</li>

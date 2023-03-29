@@ -1,6 +1,61 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { updateUser } from "../apis/user";
+import { useUserDispatch, useUserState } from "../context/context";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const dispatch = useUserDispatch();
+
+  const { user } = useUserState();
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [usePwCheck, setUsePwCheck] = useState("");
+
+  const pwRegExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,15}$/;
+  const nameRegExp = /^[a-zA-Zㄱ-힣][a-zA-Zㄱ-힣 ]{0,10}$/;
+  const pwChecked = pwRegExp.test(password) || password.trim() === "";
+  const pwCheckChecked = password === usePwCheck || usePwCheck.trim() === "";
+  const nameChecked = nameRegExp.test(name) || name.trim() === "";
+
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handlePw = (e) => {
+    setPassword(e.target.value);
+  };
+  const handlePwCheck = (e) => {
+    setUsePwCheck(e.target.value);
+  };
+
+  const handleUpdate = () => {
+    if (!nameChecked || !pwChecked) {
+      return alert("이름 또는 패스워드를 확인해주세요.");
+    }
+    if (password !== usePwCheck) {
+      return alert("동일한 패스워드를 입력해주세요.");
+    }
+    if (name === "" || !nameChecked) {
+      return alert("이름을 확인해주세요.");
+    }
+
+    updateUser(password, name).then(() => {
+      dispatch({
+        type: "UPDATE_USER",
+        user: {
+          password,
+          name,
+        },
+      });
+      setTimeout(() => {}, 500);
+
+      console.log("회원정보 수정 성공");
+      window.alert("회원정보가 변겅되었습니다.");
+      navigate("/");
+    });
+  };
+
   return (
     <div className="flex grid items-center">
       <div className="relative bg-black justify-center align-center h-[1024px]"></div>
@@ -36,12 +91,12 @@ const Profile = () => {
             border-gray-300 text-gray-900 text-sm rounded-md block 
             w-[345px] h-[45px] p-3 flex pl-[50px]"
           >
-            <p>example@example.com (변경불가)</p>
+            {user ? <p>{user.userId} (변경불가)</p> : ""}
           </div>
         </div>
 
         {/* 이름 */}
-        <div className="relative mb-4">
+        <div className="relative mb-4" isChecked={nameChecked}>
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +115,8 @@ const Profile = () => {
           </div>
           <input
             type="text"
-            id="name"
-            name="name"
+            value={name}
+            onChange={handleName}
             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-md 
                     block focus:outline-0 w-[345px] h-[45px] p-3 pl-[50px]"
             placeholder="변경할 이름을 입력하세요."
@@ -70,7 +125,7 @@ const Profile = () => {
         </div>
 
         {/* 비밀번호 입력 */}
-        <div className="relative mb-4">
+        <div className="relative mb-4" isChecked={pwChecked}>
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,8 +144,8 @@ const Profile = () => {
           </div>
           <input
             type="password"
-            id="password"
-            name="password"
+            value={password}
+            onChange={handlePw}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md
                     focus:outline-0 block w-[345px] p-3 pl-[50px]"
             placeholder="영문 숫자 포함 8자 이상"
@@ -98,9 +153,39 @@ const Profile = () => {
           />
         </div>
 
+        {/* 비밀번호 입력 */}
+        <div className="relative mb-4" isChecked={pwCheckChecked}>
+          <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+              />
+            </svg>
+          </div>
+          <input
+            type="password"
+            value={usePwCheck}
+            onChange={handlePwCheck}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md
+                    focus:outline-0 block w-[345px] p-3 pl-[50px]"
+            placeholder="비밀번호 확인"
+            required
+          />
+        </div>
+
         {/* 로그인 버튼 */}
         <button
           type="button"
+          onClick={handleUpdate}
           className="mt-[30px] w-[345px] text-white bg-[#F57B00] hover:bg-orange-700
                       font-semibold rounded-md text-md px-10 py-3 text-center"
         >

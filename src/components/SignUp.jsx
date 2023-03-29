@@ -92,9 +92,9 @@ const SignUp = () => {
   const dispatch = useUserDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [usePwCheck, setUsePwCheck] = useState("");
-  const [name, setName] = useState("");
 
   const idRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const pwRegExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,15}$/;
@@ -133,12 +133,6 @@ const SignUp = () => {
     }
 
     signupUser(email, password, name).then(() => {
-      // setUseFadeOut(true);
-      // setTimeout(() => {
-      //   setVisible(false);
-      //   setUseFadeOut(false);
-      // }, 500);
-
       dispatch({
         type: "CREATE_USER",
         user: {

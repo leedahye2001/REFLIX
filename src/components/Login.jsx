@@ -25,6 +25,7 @@ const Login = () => {
       dispatch({
         type: "LOGIN",
         userId: email,
+        userPw: password,
       });
 
       setTimeout(() => {}, 500);
