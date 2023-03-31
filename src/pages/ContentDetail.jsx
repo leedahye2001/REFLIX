@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BsStarFill, BsStartHalf, BsStar } from "react-icons/bs";
+import { BsStarFill, BsPersonHeart, BsPersonXFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { getContentDetail } from "../apis/content";
 
@@ -58,7 +58,7 @@ const ContentList = (props) => {
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   개요
                 </p>
-                <span className="text-[#999] text-base font-">
+                <span className="text-[#999] text-base">
                   {content.janre} | {content.contentsCategory}
                 </span>
               </div>
@@ -66,7 +66,7 @@ const ContentList = (props) => {
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   러닝타임
                 </p>
-                <span className="text-[#999] text-base font-">
+                <span className="text-[#999] text-base">
                   {content.runningTime} null
                 </span>
               </div>
@@ -74,9 +74,7 @@ const ContentList = (props) => {
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   개봉
                 </p>
-                <span className="text-[#999] text-base font-">
-                  {content.year}
-                </span>
+                <span className="text-[#999] text-base">{content.year}</span>
               </div>
               <div className="flex">
                 {/* <p className="text-[#999] text-base font-bold pr-[10px]">
@@ -89,11 +87,25 @@ const ContentList = (props) => {
                 <BsStarFill color="#fff" className="mt-[4px]" />
                 <span className="text-[#999] text-base pl-[10px]">9.60</span>
               </div>
-              <div className="">
+              <div>
                 <p className="text-[#999] text-base font-bold pr-[10px]">
                   줄거리
                 </p>
                 <span className="text-[#999] text-base ">{content.story}</span>
+              </div>
+              <div className="flex flex-cols gap-4">
+                <div className="flex bg-[#C3C3C3] rounded-md w-40 justify-center px-[20px] py-2 hover:bg-[#fec3c3]">
+                  <button className="flex text-[#626262] hover:text-[#ff7b7b] font-bold">
+                    <BsPersonHeart size="25" className="mr-2" />
+                    최고예요
+                  </button>
+                </div>
+                <div className="flex bg-[#C3C3C3] rounded-md w-40 justify-center px-[20px] py-2 hover:bg-[#8ebede]">
+                  <button className="flex text-[#626262] hover:text-[#3c8cc2] font-bold">
+                    <BsPersonXFill size="25" className="mr-2" />
+                    별로예요
+                  </button>
+                </div>
               </div>
             </div>
           </div>

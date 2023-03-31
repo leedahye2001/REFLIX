@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { IoPersonCircleSharp } from "react-icons/io5";
 import { updateUser } from "../apis/user";
 import { useUserDispatch, useUserState } from "../context/context";
 
@@ -62,14 +63,22 @@ const Profile = () => {
       <div
         className="text-center flex-cols z-1
         absolute
-        top-[25%]
+        top-[15%]
         left-[50%]
         -translate-x-1/2"
       >
         <br />
-        <p className="flex font-bold text-[#F57B00] text-5xl">My Profile</p>
+        <p className="flex justify-center font-bold text-[#F57B00] text-5xl">
+          My Profile
+        </p>
         <br />
-
+        <div className="flex justify-center align-center ">
+          <IoPersonCircleSharp
+            size="100"
+            color="#c9c9c9"
+            className="my-[10px]"
+          />
+        </div>
         {/* 이메일 */}
         <div className="relative mb-4">
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
@@ -94,7 +103,6 @@ const Profile = () => {
             {user ? <p>{user.userId} (변경불가)</p> : ""}
           </div>
         </div>
-
         {/* 이름 */}
         <div className="relative mb-4" isChecked={nameChecked}>
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
@@ -123,7 +131,6 @@ const Profile = () => {
             required
           />
         </div>
-
         {/* 비밀번호 입력 */}
         <div className="relative mb-4" isChecked={pwChecked}>
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
@@ -152,7 +159,6 @@ const Profile = () => {
             required
           />
         </div>
-
         {/* 비밀번호 입력 */}
         <div className="relative mb-4" isChecked={pwCheckChecked}>
           <div className="absolute inset-y-0 left-0 flex items-center p-3 pointer-events-none">
@@ -181,7 +187,6 @@ const Profile = () => {
             required
           />
         </div>
-
         {/* 로그인 버튼 */}
         <button
           type="button"
@@ -191,7 +196,6 @@ const Profile = () => {
         >
           회원 정보 수정
         </button>
-
         {/* 로그인 정보 저장 */}
         <div className="pt-4 flex items-center mb-10 sm:mb-10">
           <input
@@ -207,7 +211,6 @@ const Profile = () => {
             로그인 정보 저장
           </label>
         </div>
-
         {/* 비번 분실 */}
         <Link to="/lost" className="">
           <span className="text-[#F57B00] hover:text-orange-700 font-semibold text-sm">

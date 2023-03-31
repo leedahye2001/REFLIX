@@ -164,7 +164,7 @@ const SignUp = () => {
       <div
         className="text-center flex-cols z-1
         absolute
-        top-[25%]
+        top-[20%]
         left-[50%]
         -translate-x-1/2"
       >
