@@ -9,25 +9,6 @@ const initialUser = {
   user: null,
 };
 
-// // 로딩중일 때 바뀔 상태 객체
-// const loadingState = {
-//   id: null,
-//   name: null,
-// };
-
-// // 성공했을 때의 상태 만들어주는 함수
-// const success = (id, name, token) => ({
-//   id,
-//   name,
-// });
-
-// 실패했을 때의 상태 만들어주는 함수
-// const error = error => ({
-//   loading: false,
-//   data: null,
-//   error: error
-// });
-
 function userReducer(state, action) {
   const { type, payload } = action;
   switch (type) {

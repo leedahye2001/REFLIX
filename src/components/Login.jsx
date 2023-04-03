@@ -13,26 +13,38 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    loginUser(email, password).then((response) => {
-      if (response.accessToken) {
-        localStorage.setItem("access-token", response.accessToken);
-      }
-      // else if (response.refreshToken) {
-      //   localStorage.setItem("refreshToken", response.refreshToken);
-      // }
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-      dispatch({
-        type: "LOGIN",
-        userId: email,
-        userPw: password,
+    loginUser(email, password)
+      .then((response) => {
+        if (response.accessToken) {
+          localStorage.setItem("access-token", response.accessToken);
+        }
+        // else if (response.refreshToken) {
+        //   localStorage.setItem("refreshToken", response.refreshToken);
+        // }
+
+        dispatch({
+          type: "LOGIN",
+          userId: email,
+          userPw: password,
+        });
+
+        setTimeout(() => {}, 500);
+
+        if (response.status === 200) {
+          window.alert("성공적으로 로그인 되었습니다 !");
+          return navigate("/");
+        } else {
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
+
+        return navigate("/login");
       });
-
-      setTimeout(() => {}, 500);
-
-      window.alert("성공적으로 로그인 되었습니다 !");
-      navigate("/");
-    });
   };
 
   const handleIdInput = (e) => {

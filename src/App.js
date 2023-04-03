@@ -13,7 +13,7 @@ import Footer from "./components/nav/Footer";
 import Profile from "./pages/Profile";
 import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
-import { ContextProvider, useUserState } from "./context/context";
+import { useUserState } from "./context/context";
 
 const App = () => {
   const { user } = useUserState();
@@ -25,6 +25,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} exact />
             <Route path="/contentdetail" element={<ContentDetail />} />
+            <Route path="/mypage/:email" element={<MyPage />} />
+            <Route path="/profile/:email" element={<Profile />} />
           </Routes>
         ) : (
           <Routes>
@@ -32,9 +34,6 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/contentdetail" element={<ContentDetail />} />
-
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/profile" element={<Profile />} />
           </Routes>
         )}
       </div>

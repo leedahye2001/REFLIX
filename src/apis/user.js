@@ -43,23 +43,11 @@ async function loginUser(email, password) {
   })
     .then(async (res) => {
       const result = await res.json();
-      console.log(result);
       return result;
     })
 
     .then((data) => data);
 }
-
-// async function userInfo(email, username) {
-//   return await fetch(`/user/detail`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((res) => res.json())
-//     .then((data) => data);
-// }
 
 async function getUserByToken(token) {
   return await fetch("/auth/login", {

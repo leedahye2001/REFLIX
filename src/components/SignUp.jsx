@@ -132,21 +132,27 @@ const SignUp = () => {
       return alert("이름을 확인해주세요.");
     }
 
-    signupUser(email, password, name).then(() => {
-      dispatch({
-        type: "CREATE_USER",
-        user: {
-          email,
-          password,
-          name,
-        },
+    signupUser(email, password, name)
+      .then((response) => {
+        dispatch({
+          type: "CREATE_USER",
+          user: {
+            email,
+            password,
+            name,
+          },
+        });
+        setTimeout(() => {}, 500);
+        if (response.status === 200) {
+          window.alert("회원가입 되었습니다. 로그인 해주세요.");
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert(err);
+        return navigate("/login");
       });
-      setTimeout(() => {}, 500);
-
-      console.log("회원가입 !");
-      window.alert("회원가입 되었습니다. 로그인 해주세요.");
-      navigate("/");
-    });
   };
 
   return (

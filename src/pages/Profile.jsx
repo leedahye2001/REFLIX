@@ -41,20 +41,28 @@ const Profile = () => {
       return alert("이름을 확인해주세요.");
     }
 
-    updateUser(password, name).then(() => {
-      dispatch({
-        type: "UPDATE_USER",
-        user: {
-          password,
-          name,
-        },
-      });
-      setTimeout(() => {}, 500);
+    updateUser(password, name)
+      .then((response) => {
+        dispatch({
+          type: "UPDATE_USER",
+          user: {
+            password,
+            name,
+          },
+        });
+        setTimeout(() => {}, 500);
 
-      console.log("회원정보 수정 성공");
-      window.alert("회원정보가 변겅되었습니다.");
-      navigate("/");
-    });
+        if (response.status === 200) {
+          console.log("회원정보 수정 성공");
+          window.alert("회원정보가 변겅되었습니다.");
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("회원정보 수정을 실패했습니다.");
+        return navigate("/profile/:email");
+      });
   };
 
   return (
