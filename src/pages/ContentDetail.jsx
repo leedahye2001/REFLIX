@@ -1,25 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsStarFill, BsPersonHeart, BsPersonXFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { getContentDetail } from "../apis/content";
+import NoContentDetail from "../components/content/NoContentDetail";
 
 const ContentDetail = () => {
-  // const [playlist, setPlaylist] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCUj6rrhMTR9pipbAWBAMvUQ&maxResults=50&key={}"
-  //     )
-  //     .then((res) => {
-  //       console.log(res);
-  //       setPlaylist(res.data.items);
-  //     })
-  //     .catch(() => {});
-  // }, []);
-
-  // console.log(playlist);
-
   const [content, setContent] = useState();
   const [contents, setContents] = useState([]);
 
@@ -30,11 +15,8 @@ const ContentDetail = () => {
   return content ? (
     <ContentList content={content} contents={contents} />
   ) : (
-    <h1>Loading</h1>
+    <NoContentDetail />
   );
-
-  //  {content.contentsId},{content.contentName},{content.contentImageUrl},
-  //         {content.janre},{content.year},
 };
 
 const ContentList = (props) => {
@@ -110,20 +92,6 @@ const ContentList = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="container">
-          {playlist &&
-            playlist.map((i, idx) => {
-              return (
-                <div className="playlist" key={idx}>
-                  <img src={i.snippet.thumbnails.high["url"]} alt="" />
-                  <Link to={"/playlist/" + i.id}>
-                    <h1>{i.snippet.localized["title"]}</h1>
-                  </Link>
-                  <p>{i.snippet.localized["description"]}</p>
-                </div>
-              );
-            })}
-        </div> */}
       </div>
     </>
   );

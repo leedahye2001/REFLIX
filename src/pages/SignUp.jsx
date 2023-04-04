@@ -1,96 +1,23 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
 import { signupUser } from "../apis/user";
-import styled from "styled-components";
 import { useUserDispatch } from "../context/context";
-
-const SignupBtn = styled.button`
-  border: none;
-  padding: 15px 0px;
-  color: #ffff;
-  font-weight: 600;
-  border-radius: 5px;
-  background-color: #ff8a3d96;
-  cursor: pointer;
-  :hover {
-    background-color: #ff8a3d96;
-  }
-  :focus {
-    outline: none;
-  }
-`;
-
-const InputWrapper = styled.div`
-  margin-bottom: 20px;
-
-  span:nth-child(1) {
-    display: flex;
-    color: white;
-    font-weight: 600;
-    font-size: 18px;
-  }
-  span:nth-child(2) {
-    display: flex;
-    margin-bottom: 5px;
-    font-size: 12px;
-    color: ${(props) => (props.isChecked ? "white" : "#ff0000")};
-  }
-  input {
-    /* width: 80%;
-    flex: 1; */
-    background-color: white;
-    border-color: #afafaf;
-    color: black;
-    font-weight: 300;
-    font-size: 15px;
-    border-radius: 0.375rem;
-    width: 400px;
-    height: 40px;
-    padding: 6px 6px 6px 50px;
-    display: block;
-    :focus {
-      outline: none;
-    }
-  }
-`;
-
-const InputIdWrapper = styled.div`
-  display: flex;
-  button {
-    border: 0px;
-    text-align: end;
-    margin-block: auto;
-    color: ${(props) => (props.idChecked ? "white" : "#ff0000")};
-    font-size: 12px;
-    background-color: #ffff;
-    cursor: pointer;
-    :focus {
-      outline: none;
-      border-bottom: 1px solid;
-    }
-    :disabled {
-      cursor: default !important;
-    }
-  }
-`;
-
-const Block = styled.section`
-  margin-bottom: 20px;
-`;
-
-const SelectWrapper = styled.div`
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ff8a3d;
-  select {
-    width: 100%;
-  }
-`;
+import {
+  InputWrapper,
+  InputIdWrapper,
+  Block,
+  MainWrapper,
+  VideoWrapper,
+  SignUpWrapper,
+  SignUpButton,
+  Account,
+} from "../css/SignUpStyle";
 
 const SignUp = () => {
-  // input state
   const dispatch = useUserDispatch();
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -156,26 +83,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex grid items-center">
-      <div className="relative bg-black justify-center align-center">
-        <video
-          src={loginBG}
-          className="opacity-30 laptop:visible w-full h-[1000px] object-cover"
-          autoPlay
-          loop
-          muted
-          // playbackRate="0.8"
-        />
-      </div>
-      <div
-        className="text-center flex-cols z-1
-        absolute
-        top-[20%]
-        left-[50%]
-        -translate-x-1/2"
-      >
+    <MainWrapper>
+      <VideoWrapper>
+        <video src={loginBG} autoPlay loop muted />
+      </VideoWrapper>
+
+      <SignUpWrapper>
         <br />
-        <p className="flex font-bold text-[#F57B00] text-5xl">SIGN UP</p>
+        <h1>SIGN UP</h1>
         <br />
 
         <Block>
@@ -298,26 +213,21 @@ const SignUp = () => {
           </InputWrapper>
         </Block>
 
-        <button
-          type="button"
-          onClick={handleSignup}
-          className="mt-[30px] w-[400px] text-white bg-[#F57B00] hover:bg-orange-700
-                      font-semibold rounded-md text-md px-10 py-4 text-center"
-        >
+        <SignUpButton type="button" onClick={handleSignup}>
           가입하기
-        </button>
+        </SignUpButton>
 
-        <div className="pt-4 flex items-center text-sm  ml-[90px]">
-          <p className="text-white">이미 계정이 있으신가요?</p>
+        <Account>
+          <p>이미 계정이 있으신가요?</p>
           <Link
             to="/login"
             className="ml-4 font-semibold text-[#F57B00] hover:text-orange-700"
           >
             로그인
           </Link>
-        </div>
-      </div>
-    </div>
+        </Account>
+      </SignUpWrapper>
+    </MainWrapper>
   );
 };
 

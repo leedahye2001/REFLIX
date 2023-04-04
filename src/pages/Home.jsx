@@ -43,13 +43,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div className="bg-black w-full h-[700px] text-white">
-        {/* <ul>
-          {posts.map(({ content_id, created_date }) => (
-            <li key={content_id}>{created_date}</li>
-          ))}
-        </ul> */}
-      </div>
     </div>
   );
 };

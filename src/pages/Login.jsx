@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { loginUser } from "../apis/user";
 import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
@@ -15,6 +15,15 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    if (email === "" && password === "") {
+      return alert("이메일 또는 패스워드를 입력해주세요.");
+    }
+    if (email === "") {
+      return alert("이메일을 입력해주세요.");
+    }
+    if (password === "") {
+      return alert("패스워드를 입력해주세요.");
+    }
 
     loginUser(email, password)
       .then((response) => {
@@ -36,13 +45,11 @@ const Login = () => {
         if (response.status === 200) {
           window.alert("성공적으로 로그인 되었습니다 !");
           return navigate("/");
-        } else {
         }
       })
       .catch((err) => {
         console.log(err);
         window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
-
         return navigate("/login");
       });
   };
@@ -70,7 +77,6 @@ const Login = () => {
           autoPlay
           loop
           muted
-          // playbackRate="0.8"
         />
       </div>
       <div
