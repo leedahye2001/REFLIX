@@ -213,9 +213,7 @@ const SignUp = () => {
           </InputWrapper>
         </Block>
 
-        <SignUpButton type="button" onClick={handleSignup}>
-          가입하기
-        </SignUpButton>
+        <SignUpButton onClick={handleSignup}>가입하기</SignUpButton>
 
         <Account>
           <p>이미 계정이 있으신가요?</p>
