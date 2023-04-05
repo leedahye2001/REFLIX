@@ -11,6 +11,7 @@ import {
   VideoWrapper,
 } from "../css/SignUpStyle";
 import { LoginButton, LoginWrapper, LostPassword } from "../css/LoginStyle";
+import axios from "axios";
 
 const Login = () => {
   const { userList } = useUserState();
@@ -23,6 +24,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     if (email === "" && password === "") {
       return alert("이메일 또는 패스워드를 입력해주세요.");
     }
@@ -33,31 +35,27 @@ const Login = () => {
       return alert("패스워드를 입력해주세요.");
     }
 
-    loginUser(email, password)
+    axios
+      .post("/auth/login", {
+        email: email,
+        password: password,
+      })
       .then((response) => {
-        if (response.accessToken) {
-          localStorage.setItem("access-token", response.accessToken);
-        }
-        // else if (response.refreshToken) {
-        //   localStorage.setItem("refreshToken", response.refreshToken);
-        // }
-
+        localStorage.setItem("access-token", response.accessToken);
+        console.log(response);
         dispatch({
           type: "LOGIN",
           userId: email,
           userPw: password,
         });
-
-        setTimeout(() => {}, 500);
-
-        if (response.status === 200) {
-          window.alert("성공적으로 로그인 되었습니다 !");
+        if ((response.status = 200)) {
+          alert("성공적으로 로그인 되었습니다 !");
           return navigate("/");
         }
       })
       .catch((err) => {
         console.log(err);
-        window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
+        alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
         return navigate("/login");
       });
   };

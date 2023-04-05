@@ -130,8 +130,7 @@ const Header = () => {
   const handleLogout = () => {
     const logoutconfirm = window.confirm("로그아웃 하시겠습니까?");
     if (logoutconfirm) {
-      localStorage.removeItem("token");
-      // localStorage.removeItem("refreshToken");
+      localStorage.removeItem("access-token");
       dispatch({ type: "LOGOUT" });
       navigate("/");
     }
@@ -159,8 +158,7 @@ const Header = () => {
             <>
               <p>{user.userId}님</p>
               <li onClick={() => handleLogout()}> 로그아웃</li>
-              <li onClick={() => handleNavigate("/mypage")}>마이페이지</li>
-              <li onClick={() => handleNavigate("/profile")}>프로필</li>
+              <li onClick={() => handleNavigate("/mypage/:id")}>마이페이지</li>
             </>
           ) : (
             <>

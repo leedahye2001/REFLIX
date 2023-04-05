@@ -130,7 +130,6 @@ const Account = styled.div`
   display: flex;
   align-items: center;
   font-size: 14px;
-
   p {
     color: white;
   }
