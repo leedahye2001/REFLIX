@@ -25,15 +25,15 @@ const App = () => {
         {user ? (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            {/* <Route path="/contentdetail/:email" element={<ContentDetail />} />
-            <Route path="/mypage/:email" element={<MyPage />} />
-            <Route path="/profile/:email" element={<Profile />} /> */}
+            <Route path="/contentdetail/:id" element={<ContentDetail />} />
+            <Route path="/mypage/:id" element={<MyPage />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<Home />} exact />{" "}
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<Home />} exact />
+            {/* <Route path="/mypage" element={<MyPage />} />
+            <Route path="/profile" element={<Profile />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="recommendlist" element={<RecommendList />} />

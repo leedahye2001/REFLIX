@@ -34,7 +34,7 @@ const MyPage = () => {
         )}
         <br />
         <div className="flex justify-center align-center ">
-          <Link to="/profile">
+          <Link to="/profile/:id">
             <IoSettingsSharp size="40" color="#ffffff" />
           </Link>
         </div>

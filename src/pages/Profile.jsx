@@ -3,11 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { updateUser } from "../apis/user";
 import { useUserDispatch, useUserState } from "../context/context";
+import axios from "axios";
 
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useUserDispatch();
 
+  const [message, setMessage] = useState("");
   const { user } = useUserState();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -41,8 +43,13 @@ const Profile = () => {
       return alert("이름을 확인해주세요.");
     }
 
-    updateUser(password, name)
+    axios
+      .post("/user/update", {
+        name: name,
+        password: password,
+      })
       .then((response) => {
+        console.log(response);
         dispatch({
           type: "UPDATE_USER",
           user: {
@@ -50,19 +57,39 @@ const Profile = () => {
             name,
           },
         });
-        setTimeout(() => {}, 500);
-
-        if (response.status === 200) {
-          console.log("회원정보 수정 성공");
-          window.alert("회원정보가 변겅되었습니다.");
-          navigate("/");
+        alert("회원정보가 변겅되었습니다.");
+        if ((response.status = 200)) {
+          return navigate("/");
         }
       })
       .catch((err) => {
+        setMessage(err.response.data.message);
         console.log(err);
-        window.alert("회원정보 수정을 실패했습니다.");
-        return navigate("/profile/:email");
+        alert(err);
       });
+
+    // updateUser(password, name)
+    //   .then((response) => {
+    //     dispatch({
+    //       type: "UPDATE_USER",
+    //       user: {
+    //         password,
+    //         name,
+    //       },
+    //     });
+    //     setTimeout(() => {}, 500);
+
+    //     if (response.status === 200) {
+    //       console.log("회원정보 수정 성공");
+    //       window.alert("회원정보가 변겅되었습니다.");
+    //       navigate("/");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     window.alert("회원정보 수정을 실패했습니다.");
+    //     return navigate("/profile/:id");
+    //   });
   };
 
   return (

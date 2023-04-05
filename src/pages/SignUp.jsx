@@ -13,11 +13,13 @@ import {
   SignUpButton,
   Account,
 } from "../css/SignUpStyle";
+import axios from "axios";
 
 const SignUp = () => {
   const dispatch = useUserDispatch();
   const navigate = useNavigate();
 
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -59,8 +61,14 @@ const SignUp = () => {
       return alert("이름을 확인해주세요.");
     }
 
-    signupUser(email, password, name)
+    axios
+      .post("/auth/register", {
+        name: name,
+        email: email,
+        password: password,
+      })
       .then((response) => {
+        console.log(response);
         dispatch({
           type: "CREATE_USER",
           user: {
@@ -69,17 +77,38 @@ const SignUp = () => {
             name,
           },
         });
-        setTimeout(() => {}, 500);
-        if (response.status === 200) {
-          window.alert("회원가입 되었습니다. 로그인 해주세요.");
-          navigate("/");
+        alert("회원가입 되었습니다. 로그인 해주세요.");
+        if ((response.status = 200)) {
+          return navigate("/login");
         }
       })
       .catch((err) => {
+        setMessage(err.response.data.message);
         console.log(err);
-        window.alert(err);
-        return navigate("/login");
+        alert(err);
       });
+
+    // signupUser(email, password, name)
+    //   .then((response) => {
+    //     dispatch({
+    //       type: "CREATE_USER",
+    //       user: {
+    //         email,
+    //         password,
+    //         name,
+    //       },
+    //     });
+    //     setTimeout(() => {}, 500);
+    //     if (response.status === 200) {
+    //       window.alert("회원가입 되었습니다. 로그인 해주세요.");
+    //       navigate("/");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     window.alert(err);
+    //     return navigate("/login");
+    //   });
   };
 
   return (
@@ -213,9 +242,7 @@ const SignUp = () => {
           </InputWrapper>
         </Block>
 
-        <SignUpButton type="button" onClick={handleSignup}>
-          가입하기
-        </SignUpButton>
+        <SignUpButton onClick={handleSignup}>가입하기</SignUpButton>
 
         <Account>
           <p>이미 계정이 있으신가요?</p>

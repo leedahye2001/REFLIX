@@ -29,26 +29,6 @@ async function updateUser(password, name) {
     .then((data) => data);
 }
 
-async function loginUser(email, password) {
-  return await fetch("/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("access-token"),
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  })
-    .then(async (res) => {
-      const result = await res.json();
-      return result;
-    })
-
-    .then((data) => data);
-}
-
 async function getUserByToken(token) {
   return await fetch("/auth/login", {
     method: "GET",
@@ -61,4 +41,4 @@ async function getUserByToken(token) {
     .then((data) => data);
 }
 
-export { signupUser, loginUser, getUserByToken, updateUser };
+export { signupUser, getUserByToken, updateUser };
