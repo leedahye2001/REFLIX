@@ -1,21 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsStarFill, BsPersonHeart, BsPersonXFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
 import { getContentDetail } from "../apis/content";
 import NoContentDetail from "../components/content/NoContentDetail";
+import throttle from "../components/util";
+
+const ScrollSection = styled.div`
+  display: flex;
+  gap: 40px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+  :hover {
+    background: linear-gradient(
+      to right,
+      rgba(20, 20, 20, 0) 10%,
+      rgba(20, 20, 20, 0.25) 25%,
+      rgba(20, 20, 20, 0.5) 50%,
+      rgba(20, 20, 20, 0.75) 75%,
+      rgba(20, 20, 20, 1) 100%
+    );
+  }
+`;
+const FrontSection = styled.div`
+  background-color: white;
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+  :hover {
+    background: linear-gradient(
+      to right,
+      rgba(20, 20, 20, 0) 10%,
+      rgba(20, 20, 20, 0.25) 25%,
+      rgba(20, 20, 20, 0.5) 50%,
+      rgba(20, 20, 20, 0.75) 75%,
+      rgba(20, 20, 20, 1) 100%
+    );
+  }
+`;
+
 const ContentList = (props) => {
   const { content, contents } = props;
+  const [contentInfo, setContentInfo] = useState(null);
 
-  const { id, mediaType } = useParams();
-  const [mediaInfo, setMediaInfo] = useState(null);
-
-  const getMediaInfo = async () => {
+  const getContentInfo = async () => {
     try {
       const response = await fetch(
         `/contents/review?contentId=1&contentname=진격의거인&category=0`
       );
       const data = await response.json();
-      setMediaInfo(data);
+      setContentInfo(data);
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -23,8 +58,45 @@ const ContentList = (props) => {
   };
 
   useEffect(() => {
-    getMediaInfo();
+    getContentInfo();
   }, []);
+
+  /* 특정 글자 수 넘으면 ... 으로 넘기기 */
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
+  const scrollRef = useRef(null);
+  const [isDrag, setIsDrag] = useState(false);
+  const [startX, setStartX] = useState();
+
+  /* 좌클릭하는 상티 */
+  const onDragStart = (e) => {
+    e.preventDefault();
+    setIsDrag(true);
+    setStartX(e.pageX + scrollRef.current.scrollLeft);
+  };
+
+  /* 클릭 멈춘 상태 */
+  const onDragEnd = () => {
+    setIsDrag(false);
+  };
+
+  /* 클릭하던 안 하던 마우스를 움직이는 상태 */
+  const onDragMove = (e) => {
+    if (isDrag) {
+      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
+      scrollRef.current.scrollLeft = startX - e.pageX;
+      if (scrollLeft === 0) {
+        setStartX(e.pageX);
+      } else if (scrollWidth <= clientWidth + scrollLeft) {
+        setStartX(e.pageX + scrollLeft);
+      }
+    }
+  };
+
+  const delay = 30; /* 좌우로 넘길 때, delay 되는 시간 */
+  const onThrottleDrageMove = throttle(onDragMove, delay);
 
   return (
     <>
@@ -33,7 +105,7 @@ const ContentList = (props) => {
           <div className="grid laptop:grid-cols-2 grid-cols-1 mx-auto laptop:w-[800px]">
             <img
               src={content.contentImageUrl}
-              className="bg-gray-200 w-[100%] rounded-xl"
+              className="bg-gray-200 w-[100%]"
               alt="content image"
             />
             <div className="grid grid-rows-1 ml-4">
@@ -106,24 +178,37 @@ const ContentList = (props) => {
               </div>
             </div>
           </div>
-          <div className="">
-            {mediaInfo ? (
-              <div className="grid grid-cols-5">
-                {mediaInfo.map((review) => (
+          <div className="grid grid-cols-1 mx-auto laptop:w-[800px]">
+            <h1 className="text-white text-4xl font-black pt-[100px] pb-[30px]">
+              🎞 관련 리뷰 영상
+            </h1>
+            {contentInfo ? (
+              <ScrollSection
+                ref={scrollRef}
+                onMouseDown={onDragStart}
+                onMouseMove={isDrag ? onThrottleDrageMove : null}
+                onMouseUp={onDragEnd}
+                onMouseLeave={onDragEnd}
+              >
+                {contentInfo.map((review) => (
                   <div key={review.videoId}>
                     <a href={review.videoId} target="_blank" rel="noreferrer">
-                      <div className="grid grid-rows-2">
-                        <img
-                          src={`${review.reviewImageurl}`}
-                          alt={review.reviewName}
-                        />
-
-                        <h1 className="text-white">{review.reviewName}</h1>
+                      <div className="grid grid-rows-1">
+                        <div className="w-[250px] rounded-md">
+                          <img
+                            src={`${review.reviewImageurl}`}
+                            alt={review.reviewName}
+                            className="rounded-xl"
+                          />
+                        </div>
+                        <p className="text-[#999]">
+                          {truncate(review.reviewName, 20)}
+                        </p>
                       </div>
                     </a>
                   </div>
                 ))}
-              </div>
+              </ScrollSection>
             ) : (
               <>No Reviews</>
             )}
