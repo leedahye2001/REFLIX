@@ -42,19 +42,19 @@ const RecommendList = () => {
         <br />
         {user ? (
           <>
-            <p className="flex justify-center font-bold text-white tablet:text-5xl text-4xl">
+            <p className="flex justify-center font-bold text-white laptop:text-5xl text-4xl">
               {user.userId}님
             </p>
-            <p className="flex justify-center font-bold text-[#F57B00] tablet:text-5xl text-4xl">
+            <p className="flex justify-center font-bold text-[#F57B00] laptop:text-5xl text-4xl">
               추천 컨텐츠 목록
             </p>
           </>
         ) : (
           <>
-            <p className="flex justify-center font-bold text-white tablet:text-5xl text-4xl">
+            <p className="flex justify-center font-bold text-white laptop:text-5xl text-4xl">
               비로그인
             </p>
-            <p className="flex justify-center font-bold text-[#F57B00] tablet:text-5xl text-4xl">
+            <p className="flex justify-center font-bold text-[#F57B00] laptop:text-5xl text-4xl">
               추천 컨텐츠 목록
             </p>
           </>
