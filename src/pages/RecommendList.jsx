@@ -4,67 +4,40 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import loginBG from "../assets/images/kids.mp4";
 import { useUserState, useUserDispatch } from "../context/context";
-import styled from "styled-components";
-import throttle from "../components/util";
+import { throttle } from "../components/util";
+import { ScrollSection } from "../css/ScrollSectionStyle";
+import ContentListModal from "../components/content/ContentListModal";
 
-const ContentListWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-`;
+// const contentListModal = ({ title, url }) => {
+//   return (
+//     <>
+//       <div>
+//         {/* <div className="grid grid-rows-1">
+//           <div className="w-[250px]">
+//             <img
+//               src={url}
+//               // alt={review.contentName}
+//               className="rounded-xl"
+//             />
+//           </div>
+//           <p className="py-5 text-[20px] text-[#999]">{title}</p>
+//         </div> */}
+//         <div className="bg-white w-60"></div>
+//       </div>
+//     </>
+//   );
+// };
 
-const ContentList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-`;
-
-const Content = styled.div`
-  background-color: white;
-  width: 200px;
-  height: 250px;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-`;
-
-const ScrollSection = styled.div`
-  display: flex;
-  gap: 40px;
-  overflow-x: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
-  :hover {
-    background: linear-gradient(
-      to right,
-      rgba(20, 20, 20, 0) 10%,
-      rgba(20, 20, 20, 0.25) 25%,
-      rgba(20, 20, 20, 0.5) 50%,
-      rgba(20, 20, 20, 0.75) 75%,
-      rgba(20, 20, 20, 1) 100%
-    );
-  }
-`;
-const FrontSection = styled.div`
-  background-color: white;
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
-  :hover {
-    background: linear-gradient(
-      to right,
-      rgba(20, 20, 20, 0) 10%,
-      rgba(20, 20, 20, 0.25) 25%,
-      rgba(20, 20, 20, 0.5) 50%,
-      rgba(20, 20, 20, 0.75) 75%,
-      rgba(20, 20, 20, 1) 100%
-    );
-  }
-`;
-
-const RecommendList = (props) => {
-  const { content, contents } = props;
+const RecommendList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [contentInfo, setContentInfo] = useState(null);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const getContentInfo = async () => {
     try {
@@ -81,16 +54,24 @@ const RecommendList = (props) => {
     getContentInfo();
   }, []);
 
-  /* 특정 글자 수 넘으면 ... 으로 넘기기 */
-  const truncate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  };
-
   const scrollRef = useRef(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState();
 
-  /* 좌클릭하는 상티 */
+  const throttle = (func, ms) => {
+    let throttled = false;
+    return (...args) => {
+      if (!throttled) {
+        throttled = true;
+        setTimeout(() => {
+          func(...args);
+          throttled = false;
+        }, ms);
+      }
+    };
+  };
+
+  /* 좌클릭하는 상태 */
   const onDragStart = (e) => {
     e.preventDefault();
     setIsDrag(true);
@@ -119,6 +100,14 @@ const RecommendList = (props) => {
   const onThrottleDrageMove = throttle(onDragMove, delay);
 
   const { user } = useUserState();
+
+  const url = "https://image.tmdb.org/t/p/w500/z56bVX93oRG6uDeMACR7cXCnAbh.jpg";
+  const title = "아바타";
+  const genre = "밀리터리 SF";
+  const running = "192분";
+  const year = "2022";
+  // const { url, title } = props;
+
   return (
     <div className="flex grid items-center">
       <div className="relative bg-black justify-center align-center h-[1024px]"></div>
@@ -150,17 +139,40 @@ const RecommendList = (props) => {
           </>
         )}
         <br />
-        {/* <ContentListWrapper>
-          <ContentList>
-            <Content>1</Content>
-            <Content>2</Content>
-            <Content>3</Content>
-            <Content>4</Content>
-            <Content>5</Content>
-          </ContentList>
-        </ContentListWrapper> */}
         <div className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]">
-          {contentInfo ? (
+          <ScrollSection
+            ref={scrollRef}
+            onMouseDown={onDragStart}
+            onMouseMove={isDrag ? onThrottleDrageMove : null}
+            onMouseUp={onDragEnd}
+            onMouseLeave={onDragEnd}
+          >
+            <div>
+              <div className="grid grid-rows-1">
+                <div className="w-[250px]" onMouseOver={openModal}>
+                  <img
+                    src={url}
+                    // alt={review.contentName}
+                    className="rounded-xl"
+                  />
+                </div>
+                <p className="py-5 text-[20px] text-[#999]">{title}</p>
+              </div>
+              <ContentListModal
+                isOpen={isModalOpen}
+                closeModal={closeModal}
+                title={title}
+                url={url}
+                genre={genre}
+                running={running}
+                year={year}
+              />
+            </div>
+          </ScrollSection>
+          {/* // ) : (
+          //   <>No Reviews</>
+          // )} */}
+          {/* {contentInfo ? (
             <ScrollSection
               ref={scrollRef}
               onMouseDown={onDragStart}
@@ -174,12 +186,13 @@ const RecommendList = (props) => {
                     <div className="w-[250px] ">
                       <img
                         src={`https://image.tmdb.org/t/p/w500/z56bVX93oRG6uDeMACR7cXCnAbh.jpg`}
-                        alt={review.contentName}
+                        // alt={review.contentName}
                         className="rounded-xl"
                       />
                     </div>
                     <p className="py-5 text-[20px] text-[#999]">
-                      {truncate(review.contentName, 20)}
+                      {/* {review.contentName} */}
+          {/* 아바타
                     </p>
                   </div>
                 </div>
@@ -187,7 +200,8 @@ const RecommendList = (props) => {
             </ScrollSection>
           ) : (
             <>No Reviews</>
-          )}
+          )} 
+          */}
         </div>
       </div>
     </div>
