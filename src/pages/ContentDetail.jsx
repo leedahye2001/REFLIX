@@ -4,41 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getContentDetail } from "../apis/content";
 import NoContentDetail from "../components/content/NoContentDetail";
-import throttle from "../components/util";
-
-const ScrollSection = styled.div`
-  display: flex;
-  gap: 40px;
-  overflow-x: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
-  :hover {
-    background: linear-gradient(
-      to right,
-      rgba(20, 20, 20, 0) 10%,
-      rgba(20, 20, 20, 0.25) 25%,
-      rgba(20, 20, 20, 0.5) 50%,
-      rgba(20, 20, 20, 0.75) 75%,
-      rgba(20, 20, 20, 1) 100%
-    );
-  }
-`;
-const FrontSection = styled.div`
-  background-color: white;
-  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
-  :hover {
-    background: linear-gradient(
-      to right,
-      rgba(20, 20, 20, 0) 10%,
-      rgba(20, 20, 20, 0.25) 25%,
-      rgba(20, 20, 20, 0.5) 50%,
-      rgba(20, 20, 20, 0.75) 75%,
-      rgba(20, 20, 20, 1) 100%
-    );
-  }
-`;
+import { truncate } from "../components/util";
+import { ScrollSection } from "../css/ScrollSectionStyle";
 
 const ContentList = (props) => {
   const { content, contents } = props;
@@ -61,16 +28,24 @@ const ContentList = (props) => {
     getContentInfo();
   }, []);
 
-  /* 특정 글자 수 넘으면 ... 으로 넘기기 */
-  const truncate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  };
-
   const scrollRef = useRef(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState();
 
-  /* 좌클릭하는 상티 */
+  const throttle = (func, ms) => {
+    let throttled = false;
+    return (...args) => {
+      if (!throttled) {
+        throttled = true;
+        setTimeout(() => {
+          func(...args);
+          throttled = false;
+        }, ms);
+      }
+    };
+  };
+
+  /* 좌클릭하는 상태 */
   const onDragStart = (e) => {
     e.preventDefault();
     setIsDrag(true);

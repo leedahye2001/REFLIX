@@ -10,3 +10,4 @@
 ## 계획
 
 - content detail에 시청 가능 OTT 가져오기
+- recommend list에 뜨는 content의 modal 창 생성
