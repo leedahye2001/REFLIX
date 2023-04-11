@@ -1,12 +1,35 @@
 import { Component, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import mainMovie from "../assets/images/movie.mp4";
 import mainLogo from "../assets/images/RE_FLIX.png";
+import UseScrollFadeIn from "../hooks/UseScrollFadeIn";
+
+const Div = styled.div`
+  margin-top: 1000px;
+  color: black;
+  text-align: center;
+  opacity: 0;
+  transform: rotate(-720deg);
+  transition: all 0.5s;
+`;
+
+const Form = styled.div`
+  margin: 500px 0 500px 0;
+  color: blue;
+`;
 
 const Home = () => {
+  // const animatedItem = UseScrollFadeIn();
+  const animatedItem = {
+    0: UseScrollFadeIn("up", 1, 0),
+    1: UseScrollFadeIn("left", 1, 0.2),
+    2: UseScrollFadeIn("down", 1, 0.3),
+  };
+
   return (
     <div>
-      <div className="bg-black">
+      <div className="bg-black flex align-center">
         <video
           src={mainMovie}
           className="opacity-70 visible w-full h-[700px] object-cover"
@@ -15,31 +38,36 @@ const Home = () => {
           muted
         />
       </div>
+
       <div>
-        <div className="absolute top-[450px] laptop:top-[450px] items-center left-[10%] laptop:left-[50%]">
-          <img
-            src={mainLogo}
-            className="w-3/4 laptop:w-2/3 "
-            alt="RE:FLIX logo"
-          ></img>
+        <div className="absolute -translate-x-1/2 top-[40%] text-center items-center left-[50%]">
           <br />
-          <p className="font-black text-white text-3xl laptop:text-4xl">
-            , for you movie type
+          <p
+            {...animatedItem[0]}
+            className="font-black text-white text-4xl laptop:text-5xl opacity-90"
+          >
+            Recommend+Review
           </p>
           <br />
           <p
-            className="font-black text-white text-3xl laptop:text-4xl
-            align-right"
+            {...animatedItem[1]}
+            className="font-black text-white text-4xl laptop:text-5xl opacity-90"
           >
-            당신의 바쁜 일상을 위해
+            Flicks
           </p>
+          {/* <img
+            src={mainLogo}
+            className="w-3/4 laptop:w-2/3 items-center"
+            alt="RE:FLIX logo"
+          /> */}
           <button
+            {...animatedItem[2]}
             type="button"
             className="mt-[55px]
               text-white bg-[#F57B00] hover:bg-orange-700
                       font-semibold rounded-md text-xl px-10 py-4 text-center"
           >
-            시작하기
+            START
           </button>
         </div>
       </div>

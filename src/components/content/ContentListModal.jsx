@@ -62,11 +62,7 @@ const ContentListModal = ({
         className="absolute top-[50%] left-[50%] rounded-md
         bg-[#171717] w-[300px] -translate-y-1/2 -translate-x-1/2 shadow-md"
       >
-        <img
-          src={url}
-          // alt={review.contentName}
-          className="rounded-md"
-        />
+        <img src={url} alt={title} className="rounded-md" />
         <div className="px-10 py-5">
           <div className="flex justify-between items-center pb-2">
             <div className="flex items-center gap-2">
