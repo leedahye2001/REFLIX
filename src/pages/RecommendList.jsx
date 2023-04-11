@@ -102,10 +102,8 @@ const RecommendList = () => {
   const { user } = useUserState();
 
   const url = "https://image.tmdb.org/t/p/w500/z56bVX93oRG6uDeMACR7cXCnAbh.jpg";
-  const title = "아바타";
-  const genre = "밀리터리 SF";
   const running = "192분";
-  const year = "2022";
+  // const year = "2022";
   // const { url, title } = props;
 
   return (
@@ -139,40 +137,9 @@ const RecommendList = () => {
           </>
         )}
         <br />
+
         <div className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]">
-          <ScrollSection
-            ref={scrollRef}
-            onMouseDown={onDragStart}
-            onMouseMove={isDrag ? onThrottleDrageMove : null}
-            onMouseUp={onDragEnd}
-            onMouseLeave={onDragEnd}
-          >
-            <div>
-              <div className="grid grid-rows-1">
-                <div className="w-[250px]" onMouseOver={openModal}>
-                  <img
-                    src={url}
-                    // alt={review.contentName}
-                    className="rounded-xl"
-                  />
-                </div>
-                <p className="py-5 text-[20px] text-[#999]">{title}</p>
-              </div>
-              <ContentListModal
-                isOpen={isModalOpen}
-                closeModal={closeModal}
-                title={title}
-                url={url}
-                genre={genre}
-                running={running}
-                year={year}
-              />
-            </div>
-          </ScrollSection>
-          {/* // ) : (
-          //   <>No Reviews</>
-          // )} */}
-          {/* {contentInfo ? (
+          {contentInfo ? (
             <ScrollSection
               ref={scrollRef}
               onMouseDown={onDragStart}
@@ -185,23 +152,30 @@ const RecommendList = () => {
                   <div className="grid grid-rows-1">
                     <div className="w-[250px] ">
                       <img
-                        src={`https://image.tmdb.org/t/p/w500/z56bVX93oRG6uDeMACR7cXCnAbh.jpg`}
-                        // alt={review.contentName}
+                        src={`${review.contentImageUrl}`}
+                        alt={review.contentName}
                         className="rounded-xl"
                       />
                     </div>
                     <p className="py-5 text-[20px] text-[#999]">
-                      {/* {review.contentName} */}
-          {/* 아바타
+                      {review.contentName}
                     </p>
                   </div>
+                  <ContentListModal
+                    isOpen={isModalOpen}
+                    closeModal={closeModal}
+                    title={review.contentName}
+                    url={url}
+                    genre={review.contentsCategory}
+                    running={running}
+                    year={review.year}
+                  />
                 </div>
               ))}
             </ScrollSection>
           ) : (
             <>No Reviews</>
-          )} 
-          */}
+          )}
         </div>
       </div>
     </div>

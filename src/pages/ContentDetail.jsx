@@ -13,9 +13,7 @@ const ContentList = (props) => {
 
   const getContentInfo = async () => {
     try {
-      const response = await fetch(
-        `/contents/review?contentId=1&contentname=진격의거인&category=0`
-      );
+      const response = await fetch(`/contents/detail?contentId=1&category=0`);
       const data = await response.json();
       setContentInfo(data);
       console.log(data);

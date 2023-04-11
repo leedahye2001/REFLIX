@@ -141,7 +141,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="px-20 py-5 bg-black border-gray-200 px-8 laptop:px-7">
+    <nav className="sticky z-10 top-0 px-20 py-5 bg-black border-gray-200 px-8 laptop:px-7">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
           <img src={Logo} className="w-[40px]" alt="REFLIX Logo" />
