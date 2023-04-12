@@ -25,7 +25,9 @@ const App = () => {
         {user ? (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/contentdetail/:id" element={<ContentDetail />} />
+            {/* <Route path="/contentdetail/:id" element={<ContentDetail />} /> */}
+
+            <Route path="/contentdetail" element={<ContentDetail />} />
             <Route path="/mypage/:id" element={<MyPage />} />
             <Route path="/profile/:id" element={<Profile />} />
           </Routes>
@@ -37,7 +39,6 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="recommendlist" element={<RecommendList />} />
-            <Route path="/contentdetail" element={<ContentDetail />} />
           </Routes>
         )}
       </div>

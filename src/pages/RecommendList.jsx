@@ -29,14 +29,75 @@ import ContentListModal from "../components/content/ContentListModal";
 // };
 
 const RecommendList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [contentInfo, setContentInfo] = useState(null);
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [previewImgSrc, setPreviewImgSrc] = useState("");
+  const [coordinate, setCoordinate] = useState([]);
+  const [modalMode, setModalMode] = useState(false);
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+  const Content = ({
+    key,
+    img,
+    contentName,
+    contentCategory,
+    setModalMode,
+    setPreviewImg,
+    setPreviewTitle,
+  }) => {
+    const onMouseOver = (event) => {
+      let defaultY = 64.19792175292969;
+      let defaultX = 228.6666717529297;
+      console.log(event.target.getBoundingClientRect());
+      setModalMode(true);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-  const closeModal = () => {
-    setIsModalOpen(false);
+      let target = event.target;
+
+      if (target.tagName === "IMG") {
+        let x = event.target.getBoundingClientRect().left;
+        let y = event.target.getBoundingClientRect().top;
+        console.log(y - defaultY);
+        setPreviewImgSrc(target.src);
+        setPreviewTitle(target.parentNode.dataset.value);
+        setCoordinate([x - defaultX, y - defaultY]);
+      }
+
+      // if (
+      //   modalMode &&
+      //   !event.target.className.includes("previewModal") &&
+      //   !event.target.className.includes("poster")
+      // ) {
+      //   setModalMode(false);
+      // }
+    };
+
+    return (
+      <>
+        <div key={key} onMouseOver={onMouseOver}>
+          <div className="grid grid-rows-1">
+            <div className="w-[250px]">
+              <img src={`${img}`} alt={contentName} className="rounded-xl" />
+            </div>
+            <p className="py-5 text-[20px] text-[#999]">{contentName}</p>
+          </div>
+          {/* <ContentListModal
+            // isOpen={isModalOpen}
+            // closeModal={closeModal}
+            // title={review.contentName}
+            // url={review.contentImageUrl}
+            genre={contentCategory}
+            // running={running}
+            // year={review.year}
+            contentInfo={contentInfo}
+          /> */}
+        </div>
+      </>
+    );
   };
 
   const getContentInfo = async () => {
@@ -100,11 +161,17 @@ const RecommendList = () => {
   const onThrottleDrageMove = throttle(onDragMove, delay);
 
   const { user } = useUserState();
-
-  const url = "https://image.tmdb.org/t/p/w500/z56bVX93oRG6uDeMACR7cXCnAbh.jpg";
   const running = "192분";
-  // const year = "2022";
-  // const { url, title } = props;
+
+  const onMouseOver = (event) => {
+    if (
+      modalMode &&
+      !event.target.className.includes("previewModal") &&
+      !event.target.className.includes("poster")
+    ) {
+      setModalMode(false);
+    }
+  };
 
   return (
     <div className="flex grid items-center">
@@ -138,7 +205,10 @@ const RecommendList = () => {
         )}
         <br />
 
-        <div className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]">
+        <div
+          onMouseOver={onMouseOver}
+          className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]"
+        >
           {contentInfo ? (
             <ScrollSection
               ref={scrollRef}
@@ -148,29 +218,13 @@ const RecommendList = () => {
               onMouseLeave={onDragEnd}
             >
               {contentInfo.map((review) => (
-                <div key={review.contentsId}>
-                  <div className="grid grid-rows-1">
-                    <div className="w-[250px] ">
-                      <img
-                        src={`${review.contentImageUrl}`}
-                        alt={review.contentName}
-                        className="rounded-xl"
-                      />
-                    </div>
-                    <p className="py-5 text-[20px] text-[#999]">
-                      {review.contentName}
-                    </p>
-                  </div>
-                  <ContentListModal
-                    isOpen={isModalOpen}
-                    closeModal={closeModal}
-                    title={review.contentName}
-                    url={url}
-                    genre={review.contentsCategory}
-                    running={running}
-                    year={review.year}
-                  />
-                </div>
+                <Content
+                  key={review.contentsId}
+                  id={review.contentsId}
+                  img={review.contentImageUrl}
+                  contentName={review.contentName}
+                  contentCategory={review.contentsCategory}
+                />
               ))}
             </ScrollSection>
           ) : (
