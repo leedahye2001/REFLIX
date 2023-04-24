@@ -47,15 +47,7 @@ const Modal = styled.div`
 // };
 
 const ContentListModal = ({
-  isOpen,
-  closeModal,
-  title,
-
-  setModalMode,
-  setPreviewTitle,
-  setPreviewImg,
-  url,
-  genre,
+  
   running,
   year,
 
@@ -64,7 +56,6 @@ const ContentListModal = ({
   img,
   contentName,
   contentCategory,
-  //   contentInfo,
 }) => {
   //   const filteredContents=contentInfo.filter(content=>content.)
 
@@ -75,13 +66,13 @@ const ContentListModal = ({
     setShow("block");
   };
 
-  const onMouseOver = (event) => {
+  const onMouseOver = (e) => {
     if (
       show === "block" &&
-      event.target.tagName !== "IMG" &&
-      event.target.tagName !== "A"
+      e.target.tagName !== "IMG" &&
+      e.target.tagName !== "A"
     ) {
-      console.log(event.target);
+      console.log(e.target);
       setShow("none");
     }
   };

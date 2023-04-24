@@ -35,36 +35,57 @@ const RecommendList = () => {
   const [previewImgSrc, setPreviewImgSrc] = useState("");
   const [coordinate, setCoordinate] = useState([]);
   const [modalMode, setModalMode] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [movieId, setMovieId] = useState("");
   // const openModal = () => {
   //   setIsModalOpen(true);
   // };
   // const closeModal = () => {
   //   setIsModalOpen(false);
   // };
+
+  useEffect(() => {
+    if (isHovered) {
+      const notTimer = setTimeout(() => {
+        setModalMode(true);
+      }, 1500);
+      return () => clearTimeout(notTimer);
+    }
+  }, [isHovered]);
+
   const Content = ({
     key,
+    id,
     img,
     contentName,
     contentCategory,
     setModalMode,
     setPreviewImg,
     setPreviewTitle,
+
+    // key={review.contentsId}
+    //               id={review.contentsId}
+    //               img={review.contentImageUrl}
+    //               contentName={review.contentName}
+    //               contentCategory={review.contentsCategory}
   }) => {
     const onMouseOver = (event) => {
-      let defaultY = 64.19792175292969;
       let defaultX = 228.6666717529297;
-      console.log(event.target.getBoundingClientRect());
+      let defaultY = 64.19792175292969;
+
+      // console.log(event.target.getBoundingClientRect());
       setModalMode(true);
 
       let target = event.target;
 
       if (target.tagName === "IMG") {
-        let x = event.target.getBoundingClientRect().left;
-        let y = event.target.getBoundingClientRect().top;
-        console.log(y - defaultY);
+        const x = event.target.getBoundingClientRect().left;
+        const y = window.pageYOffset + event.target.getBoundingClientRect().top;
         setPreviewImgSrc(target.src);
         setPreviewTitle(target.parentNode.dataset.value);
-        setCoordinate([x - defaultX, y - defaultY]);
+        setMovieId(target.parentNode.dataset.id);
+        setCoordinate([x - defaultX, y]);
+        setIsHovered(true);
       }
 
       // if (
@@ -78,8 +99,8 @@ const RecommendList = () => {
 
     return (
       <>
-        <div key={key} onMouseOver={onMouseOver}>
-          <div className="grid grid-rows-1">
+        <div onMouseOver={onMouseOver}>
+          <div className="grid grid-rows-1" key={key}>
             <div className="w-[250px]">
               <img src={`${img}`} alt={contentName} className="rounded-xl" />
             </div>
@@ -219,6 +240,7 @@ const RecommendList = () => {
             >
               {contentInfo.map((review) => (
                 <Content
+                  setModalMode={setModalMode}
                   key={review.contentsId}
                   id={review.contentsId}
                   img={review.contentImageUrl}

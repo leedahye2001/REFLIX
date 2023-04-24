@@ -15,6 +15,7 @@ import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
 import { useUserState } from "./context/context";
 import RecommendList from "./pages/RecommendList";
+import Test from "./pages/Test";
 
 const App = () => {
   const { user } = useUserState();
@@ -36,6 +37,8 @@ const App = () => {
             <Route path="/" element={<Home />} exact />
             {/* <Route path="/mypage" element={<MyPage />} />
             <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/contentdetail" element={<ContentDetail />} />
+            <Route path="/test" element={<Test />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="recommendlist" element={<RecommendList />} />
