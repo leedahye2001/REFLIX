@@ -114,7 +114,7 @@ const Footer = () => {
             </LinkToGitWrapper>
           </FooterWrapper>
           <License>
-            <p>Copyrightⓒ2023 sMilestone All rights reserved.</p>
+            <p>Copyrightⓒ2023 RE:FILX All rights reserved.</p>
           </License>
         </FooterWrap>
       </FooterSize>
