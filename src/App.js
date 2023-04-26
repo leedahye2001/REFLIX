@@ -16,6 +16,8 @@ import ContentDetail from "./pages/ContentDetail";
 import { useUserState } from "./context/context";
 import RecommendList from "./pages/RecommendList";
 import Year from "./pages/Year";
+import Type from "./pages/Type";
+import Genre from "./pages/Genre";
 
 const App = () => {
   const { user } = useUserState();
@@ -39,6 +41,8 @@ const App = () => {
             <Route path="/profile" element={<Profile />} /> */}
             <Route path="/contentdetail" element={<ContentDetail />} />
             <Route path="/year" element={<Year />} />
+            <Route path="/type" element={<Type />} />
+            <Route path="/genre" element={<Genre />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="recommendlist" element={<RecommendList />} />
