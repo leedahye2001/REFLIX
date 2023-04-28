@@ -34,9 +34,9 @@ const YearContent = styled.div`
   justify-content: center;
   background-color: #303030;
   border: white;
-
   border-radius: 5px;
   height: 300px;
+  
   h2 {
     display: grid;
     font-size: 16px;

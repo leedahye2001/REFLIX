@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Block, YearWrapper } from "../css/YearStyle";
 
-const YearContent = styled.div``;
 
 const Type = () => {
   const type = [
