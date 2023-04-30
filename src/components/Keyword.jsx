@@ -1,54 +1,18 @@
-import Keyword from "../components/Keyword";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { YearWrapper } from "../css/YearStyle";
 
-const Genre = () => {
-  const type = [
-    {
-      keyword: "액션",
-    },
-    {
-      keyword: "범죄",
-    },
-    {
-      keyword: "SF",
-    },
-    {
-      keyword: "코미디",
-    },
-    {
-      keyword: "로맨스",
-    },
-    {
-      keyword: "음악",
-    },
-    {
-      keyword: "판타지",
-    },
-    {
-      keyword: "하이틴",
-    },
-    {
-      keyword: "공포",
-    },
-    {
-      keyword: "서부",
-    },
-    {
-      keyword: "역사",
-    },
-    {
-      keyword: "스포츠",
-    },
-  ];
-
-  const test = [{ keyword: "본인이 선호하는 콘텐츠의 장르를 선택해주세요." }];
-
+const Keyword = ({ type, test }) => {
   return (
     <>
-      {/* <div>
+      <div>
         <div className="flex grid items-center">
           <div className="relative bg-black justify-center align-center h-[1024px]"></div>
           <YearWrapper>
-            <h1>본인이 선호하는 콘텐츠의 장르를 선택해주세요.</h1>
+            {test.map(({ keyword }) => (
+              <h1>{keyword}</h1>
+            ))}
+
             <div className="grid grid-cols-2 desktop:grid-cols-3 gap-4">
               {type.map(({ keyword }) => (
                 <button
@@ -78,9 +42,8 @@ const Genre = () => {
             </div>
           </YearWrapper>
         </div>
-      </div> */}
-      <Keyword type={type} test={test} />
+      </div>
     </>
   );
 };
-export default Genre;
+export default Keyword;
