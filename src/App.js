@@ -18,6 +18,7 @@ import RecommendList from "./pages/RecommendList";
 import Year from "./pages/Year";
 import Type from "./pages/Type";
 import Genre from "./pages/Genre";
+import Search from "./components/nav/Search";
 
 const App = () => {
   const { user } = useUserState();
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/" element={<Home />} exact />
             {/* <Route path="/mypage" element={<MyPage />} />
             <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/search" element={<Search />} />
             <Route path="/contentdetail" element={<ContentDetail />} />
             <Route path="/year" element={<Year />} />
             <Route path="/type" element={<Type />} />

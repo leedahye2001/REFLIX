@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useUserState } from "../context/context";
+import Background from "../css/Background";
 
 const MyPage = () => {
   const { user } = useUserState();
 
   return (
     <div className="flex grid items-center">
-      <div className="relative bg-black justify-center align-center h-[1024px]"></div>
+      <Background />
       <div
         className="text-center flex-cols z-1
         absolute

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Background from "../css/Background";
 import { YearWrapper } from "../css/YearStyle";
 
 const Keyword = ({ type, test }) => {
@@ -7,7 +8,7 @@ const Keyword = ({ type, test }) => {
     <>
       <div>
         <div className="flex grid items-center">
-          <div className="relative bg-black justify-center align-center h-[1024px]"></div>
+          <Background />
           <YearWrapper>
             {test.map(({ keyword }) => (
               <h1>{keyword}</h1>

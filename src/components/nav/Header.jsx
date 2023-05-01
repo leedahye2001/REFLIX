@@ -11,6 +11,7 @@ import styled from "styled-components";
 import Logo from "../../assets/images/reflex_logo_trans.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useUserDispatch, useUserState } from "../../context/context";
+import Search from "./Search";
 
 const NavButton = styled.button`
   @media (max-width: 690px) {
@@ -146,6 +147,7 @@ const Header = () => {
         <Link to="/" className="flex items-center">
           <img src={Logo} className="w-[40px]" alt="REFLIX Logo" />
         </Link>
+        <Search />
         <NavButton
           onClick={() => {
             setIsButtonClicked((prev) => !prev);
