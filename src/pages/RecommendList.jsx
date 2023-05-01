@@ -7,6 +7,7 @@ import { useUserState, useUserDispatch } from "../context/context";
 import { throttle } from "../components/util";
 import { ScrollSection } from "../css/ScrollSectionStyle";
 import ContentListModal from "../components/content/ContentListModal";
+import Background from "../css/Background";
 
 // const contentListModal = ({ title, url }) => {
 //   return (
@@ -182,7 +183,6 @@ const RecommendList = () => {
   const onThrottleDrageMove = throttle(onDragMove, delay);
 
   const { user } = useUserState();
-  const running = "192분";
 
   const onMouseOver = (event) => {
     if (
@@ -196,7 +196,7 @@ const RecommendList = () => {
 
   return (
     <div className="flex grid items-center">
-      <div className="relative bg-black justify-center align-center h-[1024px]"></div>
+      <Background />
       <div
         className="text-center flex-cols z-1
         absolute
