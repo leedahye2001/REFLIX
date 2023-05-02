@@ -1,4 +1,4 @@
-import Keyword from "../components/Keyword";
+import Keyword from "../../components/Keyword";
 
 const Type = () => {
   const type = [

@@ -6,6 +6,7 @@ import mainMovie from "../assets/images/movie.mp4";
 import mainLogo from "../assets/images/RE_FLIX.png";
 import TypingEffect from "../components/home/TypingEffect";
 import UseScrollFadeIn from "../hooks/UseScrollFadeIn";
+import Typewriter from "typewriter-effect";
 
 const Div = styled.div`
   margin-top: 1000px;
@@ -22,17 +23,9 @@ const Form = styled.div`
 `;
 
 const Home = () => {
-  const letters = ["Recommend", "Review", "Reflix"];
-  // const speed = 100;
-  // let i = 0;
-
-  // const typing=async()=>{
-  //   const letter=letters[i].split("");
-  //   while(letter.length){
-  //     await wait(speed);
-  //     $
-  //   }
-  // }
+  const [state] = useState({
+    title: "RE",
+  });
 
   const animatedItem = {
     0: UseScrollFadeIn("up", 1, 0),
@@ -73,21 +66,28 @@ const Home = () => {
             className="w-3/4 laptop:w-2/3 items-center"
             alt="RE:FLIX logo"
           /> */}
-          <TypingEffect
+          {/* <TypingEffect
             // className="font-black text-white text-4xl laptop:text-5xl opacity-90"
             text={letters[0]}
-          />
-          <button
-            {...animatedItem[2]}
-            type="button"
-            className="mt-[55px]
-              text-white bg-[#F57B00] hover:bg-orange-700
-                      font-semibold rounded-md text-xl px-10 py-4 text-center"
-          >
-            START
-          </button>{" "}
-          <Link to="/contentdetail">
+          /> */}
+
+          <div>
+            <h1 className="flex font-black text-white text-5xl opacity-90">
+              {state.title}
+              <Typewriter
+                options={{
+                  autoStart: true,
+                  loop: true,
+                  delay: 100,
+                  strings: ["COMMEND", "VIEW", ":FLIX"],
+                }}
+              />
+            </h1>
+          </div>
+
+          <Link to="/year">
             <button
+              {...animatedItem[2]}
               type="button"
               className="mt-[55px]
               text-white bg-[#F57B00] hover:bg-orange-700
@@ -96,6 +96,16 @@ const Home = () => {
               START
             </button>
           </Link>
+          {/* <Link to="/contentdetail">
+            <button
+              type="button"
+              className="mt-[55px]
+              text-white bg-[#F57B00] hover:bg-orange-700
+                      font-semibold rounded-md text-xl px-10 py-4 text-center"
+            >
+              START
+            </button>
+          </Link> */}
         </div>
       </div>
 

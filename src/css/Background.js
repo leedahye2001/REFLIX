@@ -1,9 +1,11 @@
-const Background = () => {
-  return (
-    <>
-      <div className="relative bg-black justify-center align-center h-[100vh]"></div>
-    </>
-  );
-};
+import styled from "styled-components";
 
-export default Background;
+const Background = styled.div`
+  position: relative;
+  background: black;
+  justify: center;
+  align: center;
+  height: 100vh;
+`;
+
+export { Background };
