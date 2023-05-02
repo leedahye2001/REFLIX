@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useUserState } from "../context/context";
-import Background from "../css/Background";
+import { Background } from "../css/Background";
 
 const MyPage = () => {
   const { user } = useUserState();

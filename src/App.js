@@ -15,10 +15,10 @@ import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
 import { useUserState } from "./context/context";
 import RecommendList from "./pages/RecommendList";
-import Year from "./pages/Year";
-import Type from "./pages/Type";
-import Genre from "./pages/Genre";
-import Search from "./components/nav/Search";
+import Year from "./pages/test/Year";
+import Type from "./pages/test/Type";
+import Genre from "./pages/test/Genre";
+import SearchResult from "./pages/SearchResult";
 
 const App = () => {
   const { user } = useUserState();
@@ -40,7 +40,7 @@ const App = () => {
             <Route path="/" element={<Home />} exact />
             {/* <Route path="/mypage" element={<MyPage />} />
             <Route path="/profile" element={<Profile />} /> */}
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<SearchResult />} />
             <Route path="/contentdetail" element={<ContentDetail />} />
             <Route path="/year" element={<Year />} />
             <Route path="/type" element={<Type />} />

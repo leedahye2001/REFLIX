@@ -4,7 +4,7 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import { updateUser } from "../apis/user";
 import { useUserDispatch, useUserState } from "../context/context";
 import axios from "axios";
-import Background from "../css/Background";
+import { Background } from "../css/Background";
 
 const Profile = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import Keyword from "../components/Keyword";
+import Keyword from "../../components/Keyword";
 
 const Year = () => {
   const type = [
@@ -16,9 +16,7 @@ const Year = () => {
     },
   ];
 
-  const test = [
-    { keyword: "본인이 선호하는 콘텐츠(영상 종류)를 선택해주세요." },
-  ];
+  const test = [{ keyword: "본인이 선호하는 콘텐츠의 연도를 선택해주세요." }];
 
   return (
     <>

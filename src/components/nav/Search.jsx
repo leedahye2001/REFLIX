@@ -1,42 +1,61 @@
-import styled from "styled-components";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { SearchBar, SearchBarWrapper } from "../../css/Search";
+import {
+  CardContainer,
+  ContentWrapper,
+  Info,
+  StyledLink,
+  Title,
+  UserInfo,
+} from "../../css/SearchResult";
+import NoContentDetail from "../content/NoContentDetail";
+const ContentList = ({ contents }) => {
+  const [clicked, setClicked] = useState();
+  const handleCardClick = (id) => {
+    setClicked(contents.find((el) => el.id === id));
+  };
 
-const SearchBarWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 50%;
-  background-color: #3a3a3a;
-  border-width: 2px;
-  border-radius: 15px;
-
-  @media (max-width: 767px) {
-    width: 75%;
-  }
-`;
-
-const SearchBar = styled.input`
-  border: none;
-  margin: 10px 20px 10px 20px;
-  border-radius: 5px;
-  font-size: 17px;
-  width: 80%;
-  background-color: #3a3a3a;
-  :focus {
-    outline: none;
-    color: white;
-  }
-`;
+  if (!contents) return;
+  return contents.map((content) => {
+    return (
+      <StyledLink
+      // to={{
+      //   pathname: `/contents/detail/?${
+      //     content.contentId
+      //   }&${content.category.toLowerCase()}`,
+      // }}
+      >
+        <CardContainer
+          key={content.contentsId}
+          onClick={() => handleCardClick(content.id)}
+        >
+          <img src={content.contentImageUrl} alt="content poster" />
+          <UserInfo>
+            <Title>{content.contentName}</Title>
+            <Info>
+              {content.media_type} · {content.year}
+            </Info>
+          </UserInfo>
+          {/* {clicked && <DetailPage clicked={clicked} setClicked={setClicked} />} */}
+        </CardContainer>
+      </StyledLink>
+    );
+  });
+};
 
 const Search = () => {
+  const [search, setSearch] = useState("");
+  const [contents, setContents] = useState(null);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/search");
   };
 
-  const [search, setSearch] = useState("");
-  const [contents, setContents] = useState(null);
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
 
   useEffect(() => {
     const getItems = async () => {
@@ -55,10 +74,6 @@ const Search = () => {
     if (search) getItems();
   }, [search]);
 
-  const handleInputChange = (e) => {
-    setSearch(e.target.value);
-  };
-
   return (
     <>
       <SearchBarWrapper onClick={() => handleClick()}>
@@ -69,6 +84,9 @@ const Search = () => {
           onChange={handleInputChange}
         />
       </SearchBarWrapper>
+      <ContentWrapper>
+        {search ? <ContentList contents={contents} /> : <NoContentDetail />}
+      </ContentWrapper>
     </>
   );
 };

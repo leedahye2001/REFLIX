@@ -7,7 +7,7 @@ import { useUserState, useUserDispatch } from "../context/context";
 import { throttle } from "../components/util";
 import { ScrollSection } from "../css/ScrollSectionStyle";
 import ContentListModal from "../components/content/ContentListModal";
-import Background from "../css/Background";
+import { Background } from "../css/Background";
 
 // const contentListModal = ({ title, url }) => {
 //   return (

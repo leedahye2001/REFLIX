@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Background from "../css/Background";
+import { Background } from "../css/Background";
 import { YearWrapper } from "../css/YearStyle";
 
 const Keyword = ({ type, test }) => {
