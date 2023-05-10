@@ -3,7 +3,10 @@ import Keyword from "../../components/Keyword";
 const Year = () => {
   const type = [
     {
-      keyword: "2000년대 이전",
+      keyword: "1990년대 이전",
+    },
+    {
+      keyword: "1990년대 (1990 ~ 2000)",
     },
     {
       keyword: "2000년대 (2000 ~ 2009)",
