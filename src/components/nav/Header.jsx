@@ -39,13 +39,38 @@ const Header = () => {
     navigate(path);
   };
 
+  // const [search, setSearch] = useState("");
+  // const [contents, setContents] = useState(null);
+  // const handleSearch = (value) => {
+  //   setSearch(value);
+  // };
+
+  // useEffect(() => {
+  //   const getSearchContent = async () => {
+  //     return await fetch(`/contents/search?q=${search}`)
+  //       .then((res) => {
+  //         if (!res.ok) {
+  //           return new Promise.reject("no found");
+  //         }
+  //         return res.json();
+  //       })
+  //       .then((list) => {
+  //         setContents(list);
+  //       })
+  //       .catch((err) => console.error(err));
+  //   };
+  //   if (search) getSearchContent();
+  // }, [search]);
+
   return (
     <nav className="sticky z-10 top-0 px-20 py-5 bg-black border-gray-200 px-8 laptop:px-7">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
           <img src={Logo} className="w-[40px]" alt="REFLIX Logo" />
         </Link>
+
         <Search />
+
         <NavButton
           onClick={() => {
             setIsButtonClicked((prev) => !prev);

@@ -1,5 +1,76 @@
+// import { useNavigate } from "react-router-dom";
+// import ContentList from "../components/nav/Search";
+// import { useEffect, useState } from "react";
+// import { IoSearch } from "react-icons/io5";
+// import { Background } from "../css/Background";
+// import NoContentDetail from "../components/content/NoContentDetail";
+// import {
+//   CardContainer,
+//   ContentWrapper,
+//   Info,
+//   MainWrapper,
+//   StyledLink,
+//   Title,
+//   UserInfo,
+// } from "../css/SearchResult";
+// import { SearchBar, SearchBarWrapper } from "../css/Search";
+// import Search from "../components/nav/Search";
+
+// const SearchResult = () => {
+//   const [search, setSearch] = useState("");
+//   const [contents, setContents] = useState(null);
+//   const navigate = useNavigate();
+//   const handleClick = () => {
+//     navigate("/search");
+//   };
+
+//   const handleInputChange = (e) => {
+//     setSearch(e.target.value);
+//   };
+//   const handleSearch = (value) => {
+//     setSearch(value);
+//   };
+
+//   useEffect(() => {
+//     const getSearchContent = async () => {
+//       return await fetch(`/contents/search?q=${search}`)
+//         .then((res) => {
+//           if (!res.ok) {
+//             return new Promise.reject("no found");
+//           }
+//           return res.json();
+//         })
+//         .then((list) => {
+//           setContents(list);
+//         })
+//         .catch((err) => console.error(err));
+//     };
+//     if (search) getSearchContent();
+//   }, [search]);
+
+//   return (
+//     <div>
+//       <Background />
+//       <div
+//         className="text-center flex-cols z-1
+//         absolute
+//         top-[15%]
+//         left-[50%]
+//         -translate-x-1/2"
+//       >
+//         <Search onSearch={handleSearch} />
+//         <ContentWrapper>
+//           {search ? <ContentList contents={contents} /> : <NoContentDetail />}
+//         </ContentWrapper>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SearchResult;
+
 import { useNavigate } from "react-router-dom";
-// import ContentList from "../../components/search/ContentList";
+import ContentList from "../components/nav/Search";
 import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { Background } from "../css/Background";
@@ -14,9 +85,7 @@ import {
   UserInfo,
 } from "../css/SearchResult";
 import { SearchBar, SearchBarWrapper } from "../css/Search";
-// import { getSearchContent } from "../../apis/content";
-// import CardList from "../../components/search/CardList";
-// import DetailPage from "../detail/Detailpage";
+import Search from "../components/nav/Search";
 
 // const ContentList = ({ contents }) => {
 //   const [clicked, setClicked] = useState();
@@ -52,35 +121,8 @@ import { SearchBar, SearchBarWrapper } from "../css/Search";
 //   });
 // };
 
-const SearchResult = ({ search, contents }) => {
-  // const [search, setSearch] = useState("");
-  // const [contents, setContents] = useState(null);
-  // const navigate = useNavigate();
-  // const handleClick = () => {
-  //   navigate("/search");
-  // };
-
-  // const handleInputChange = (e) => {
-  //   setSearch(e.target.value);
-  // };
-
-  // useEffect(() => {
-  //   const getSearchContent = async () => {
-  //     return await fetch(`/contents/search?q=${search}`)
-  //       .then((res) => {
-  //         if (!res.ok) {
-  //           return new Promise.reject("no found");
-  //         }
-  //         return res.json();
-  //       })
-  //       .then((list) => {
-  //         setContents(list);
-  //       })
-  //       .catch((err) => console.error(err));
-  //   };
-  //   if (search) getSearchContent();
-  // }, [search]);
-
+const SearchResult = ({ contents }) => {
+  const [search, setSearch] = useState("");
   return (
     <div>
       <Background />
@@ -91,20 +133,10 @@ const SearchResult = ({ search, contents }) => {
         left-[50%]
         -translate-x-1/2"
       >
-        {/* <MainWrapper>
-          <SearchBarWrapper onClick={() => handleClick()}>
-            <IoSearch size="40" color="#B0B0B0" style={{ padding: 10 }} />
-            <SearchBar
-              type="search"
-              placeholder="검색"
-              onChange={handleInputChange}
-            />
-          </SearchBarWrapper>
-        </MainWrapper> */}
-
-        {/* <ContentWrapper>
-          {search ? <ContentList contents={contents} /> : <NoContentDetail />}
-        </ContentWrapper> */}
+        <ContentWrapper>
+          {/* {search ? <ContentList contents={contents} /> : <NoContentDetail />} */}
+          {/* <ContentList contents={contents} /> */}
+        </ContentWrapper>
       </div>
     </div>
   );
