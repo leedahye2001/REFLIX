@@ -7,6 +7,7 @@ const Keyword = ({ type, test }) => {
     <>
       <div className="flex grid items-center">
         <Background />
+
         <YearWrapper>
           {test.map(({ keyword }) => (
             <h1>{keyword}</h1>

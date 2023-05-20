@@ -3,44 +3,94 @@ import Keyword from "../../components/Keyword";
 const Genre = () => {
   const type = [
     {
-      keyword: "액션",
+      keyword: "드라마",
     },
     {
       keyword: "범죄",
     },
     {
-      keyword: "SF",
+      keyword: "액션",
+    },
+    {
+      keyword: "모험",
+    },
+    {
+      keyword: "애니메이션",
     },
     {
       keyword: "코미디",
     },
     {
-      keyword: "로맨스",
+      keyword: "미스터리",
     },
     {
-      keyword: "음악",
-    },
-    {
-      keyword: "판타지",
-    },
-    {
-      keyword: "하이틴",
-    },
-    {
-      keyword: "공포",
+      keyword: "다큐멘터리",
     },
     {
       keyword: "서부",
     },
     {
+      keyword: "SF",
+    },
+    {
+      keyword: "스릴러",
+    },
+    {
+      keyword: "로맨스",
+    },
+    {
+      keyword: "공포",
+    },
+    {
+      keyword: "판타지",
+    },
+    {
+      keyword: "가족",
+    },
+    {
       keyword: "역사",
     },
     {
-      keyword: "스포츠",
+      keyword: "음악",
+    },
+    {
+      keyword: "전쟁",
+    },
+    {
+      keyword: "TV",
+    },
+    {
+      keyword: "영화",
+    },
+    {
+      keyword: "Kids",
+    },
+    {
+      keyword: "Sci-Fi & Fantasy",
+    },
+    {
+      keyword: "Reality",
+    },
+    {
+      keyword: "Action & Adventure",
+    },
+    {
+      keyword: "Soap",
+    },
+    {
+      keyword: "News",
+    },
+    {
+      keyword: "War & Politics",
+    },
+    {
+      keyword: "Talk",
     },
   ];
 
-  const test = [{ keyword: "본인이 선호하는 콘텐츠의 장르를 선택해주세요." }];
+  const test = [
+    { keyword: "본인이 선호하는 콘텐츠의 장르를 모두 선택해주세요." },
+  ];
 
   return (
     <>

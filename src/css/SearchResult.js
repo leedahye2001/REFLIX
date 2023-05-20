@@ -92,7 +92,7 @@ const Info = styled.span`
 //   }
 // `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
   display: block;
   text-decoration: none;
   color: white;
