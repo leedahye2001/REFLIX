@@ -110,9 +110,9 @@ const ContentList = ({ contents }) => {
   return contents.map((content) => {
     return (
       <StyledLink
-        to={{
-          pathname: `/contents/detail/?${content.contentId}`,
-        }}
+      // to={{
+      //   pathname: `/contents/detail/?${content.contentId}`,
+      // }}
       >
         <CardContainer
           key={content.contentsId}

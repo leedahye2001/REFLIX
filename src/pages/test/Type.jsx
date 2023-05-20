@@ -1,30 +1,158 @@
 import Keyword from "../../components/Keyword";
 
+// Type이라고 되어있지만 키워드 포함된 컴포넌트임
 const Type = () => {
   const type = [
     {
-      keyword: "영화",
+      keyword: "based on novel or book",
     },
     {
-      keyword: "드라마",
+      keyword: "new york city",
     },
     {
-      keyword: "애니메이션",
+      keyword: "london, england",
     },
     {
-      keyword: "시트콤",
+      keyword: "sibling relationship",
     },
     {
-      keyword: "게임",
+      keyword: "competition",
     },
     {
-      keyword: "다큐멘터리",
+      keyword: "high school",
+    },
+    {
+      keyword: "romance",
+    },
+    {
+      keyword: "police",
+    },
+    {
+      keyword: "martial arts",
+    },
+    {
+      keyword: "california",
+    },
+    {
+      keyword: "paris, france",
+    },
+    {
+      keyword: "miniseries",
+    },
+    {
+      keyword: "prison",
+    },
+    {
+      keyword: "anthology",
+    },
+    {
+      keyword: "game show",
+    },
+    {
+      keyword: "friendship",
+    },
+    {
+      keyword: "england",
+    },
+    {
+      keyword: "japan",
+    },
+    {
+      keyword: "suicide",
+    },
+    {
+      keyword: "holiday",
+    },
+    {
+      keyword: "chicago, illinois",
+    },
+    {
+      keyword: "parent child relationship",
+    },
+    {
+      keyword: "sketch comedy",
+    },
+    {
+      keyword: "loss of loved one",
+    },
+    {
+      keyword: "small town",
+    },
+    {
+      keyword: "sports",
+    },
+    {
+      keyword: "love triangle",
+    },
+    {
+      keyword: "stand-up comedy",
+    },
+    {
+      keyword: "talk show",
+    },
+    {
+      keyword: "australia",
+    },
+    {
+      keyword: "hotel",
+    },
+    {
+      keyword: "telenovela",
+    },
+    {
+      keyword: "spy",
+    },
+    {
+      keyword: "world war ii",
+    },
+    {
+      keyword: "variety show",
+    },
+    {
+      keyword: "corruption",
+    },
+    {
+      keyword: "detective",
+    },
+    {
+      keyword: "monster",
+    },
+    {
+      keyword: "superhero",
+    },
+    {
+      keyword: "san francisco, california",
+    },
+    {
+      keyword: "family",
+    },
+    {
+      keyword: "canada",
+    },
+    {
+      keyword: "france",
+    },
+    {
+      keyword: "future",
+    },
+    {
+      keyword: "woman director",
+    },
+    {
+      keyword: "cooking",
+    },
+    {
+      keyword: "journalist",
+    },
+    {
+      keyword: "musical",
+    },
+    {
+      keyword: "politics",
     },
   ];
 
-  const test = [
-    { keyword: "본인이 선호하는 콘텐츠(영상 종류)를 선택해주세요." },
-  ];
+  const test = [{ keyword: "본인이 선호하는 키워드를 모두 선택해주세요." }];
 
   return (
     <>

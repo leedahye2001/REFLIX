@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const YearWrapper = styled.div`
   text-align: center;
+  /* display: flex;
+  flex-wrap: wrap; */
   flex-direction: column;
   position: absolute;
   z-index: 1;
