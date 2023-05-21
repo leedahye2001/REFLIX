@@ -343,31 +343,33 @@ import { useLocation, useNavigate } from "react-router-dom";
 const RecommendList = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const [whole, setWhole] = useState([]);
-  const [data, setData] = useState([]);
+  const [whole, setWhole] = useState([]);
 
-  useEffect(() => {
-    console.log("state".location.state);
+  const data = location.state;
+  // const [data, setData] = useState([]);
 
-    if (location.state) {
-      setData(location.state);
-      // setWhole(location.state.whole);
-    }
-    // else {
-    //   axios
-    //     .post("/contents/submit", {
-    //       // email: sessionStorage.getItem("email"),
-    //     })
-    //     .then((res) => {
-    //       setWhole(res.data.data);
-    //       return res.data.data;
-    //     })
-    //     .then((res) => res.slice(0, 8))
-    //     .then((res) => {
-    //       setData(res);
-    //     });
-    // }
-  }, []);
+  // useEffect(() => {
+  //   console.log("state", location.state.result);
+
+  //   if (location.state) {
+  //     // setData(location.state.part.slice(0, 8));
+  //     setData(location.state);
+  //     setWhole(location.state.whole);
+  //   } else {
+  //     axios
+  //       .post("/contents/submit", {
+  //         // email: sessionStorage.getItem("email"),
+  //       })
+  //       .then((res) => {
+  //         setWhole(res.data.data);
+  //         return res.data.data;
+  //       })
+  //       .then((res) => res.slice(0, 8))
+  //       .then((res) => {
+  //         setData(res);
+  //       });
+  //   }
+  // }, [location.state]);
 
   return (
     <>
@@ -385,7 +387,11 @@ const RecommendList = () => {
                 className="rounded-xl"
               />
             </div>
-            <p className="py-5 text-[20px] text-[#999]">{item.contentName}</p>
+            <p className="py-5 text-[20px] text-[#999]">{item.name}</p>
+            <p className="py-5 text-[20px] text-[#999]">{item.simir}</p>
+            <p className="py-5 text-[20px] text-[#999]">
+              {item.contentsCategory}
+            </p>
           </div>
         ))
       ) : (
