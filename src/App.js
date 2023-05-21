@@ -15,10 +15,8 @@ import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
 import { useUserState } from "./context/context";
 import RecommendList from "./pages/RecommendList";
-import Year from "./pages/test/Year";
-import Type from "./pages/test/Type";
-import Genre from "./pages/test/Genre";
 import SearchResult from "./pages/SearchResult";
+import Test from "./pages/Test";
 
 const App = () => {
   const { user } = useUserState();
@@ -30,10 +28,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} exact />
             <Route path="/contents/detail/:id" element={<ContentDetail />} />
-
             {/* <Route path="/contentdetail" element={<ContentDetail />} /> */}
             <Route path="/mypage/:id" element={<MyPage />} />
             <Route path="/profile/:id" element={<Profile />} />
+            {/* <Route path="/recommendlist" element={<RecommendList />} /> */}
           </Routes>
         ) : (
           <Routes>
@@ -42,12 +40,13 @@ const App = () => {
             <Route path="/profile" element={<Profile />} /> */}
             <Route path="/search" element={<SearchResult />} />
             <Route path="/contentdetail" element={<ContentDetail />} />
-            <Route path="/year" element={<Year />} />
-            <Route path="/type" element={<Type />} />
-            <Route path="/genre" element={<Genre />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/test/:id" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} />
+            <Route path="/test/:id" element={<Test />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="recommendlist" element={<RecommendList />} />
+            <Route path="/recommendlist" element={<RecommendList />} />
           </Routes>
         )}
       </div>
