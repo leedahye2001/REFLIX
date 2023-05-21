@@ -1,0 +1,54 @@
+import styled from "styled-components";
+
+const Btn = styled.button`
+  .btn {
+    min-width: 140px;
+    height: 55px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: $button-color;
+    color: white;
+    cursor: pointer;
+    padding: 0 15px;
+
+    &-sm {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    &-md {
+      min-width: 180px;
+      height: 70px;
+      border-radius: 15px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+    &-lg {
+      min-width: 200px;
+      height: 75px;
+      border-radius: 20px;
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    &-red {
+      background-color: $selected-color;
+    }
+    &-green {
+      background-color: $green-color;
+    }
+  }
+`;
+
+// .btn-outline {
+//   border: 3px solid white;
+
+//   &-red {
+//     border-color: $selected-color;
+//   }
+//   &-green {
+//     border-color: $green-color;
+//   }
+// }
+
+export { Btn };

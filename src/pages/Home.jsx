@@ -85,7 +85,7 @@ const Home = () => {
             </h1>
           </div>
 
-          <Link to="/year">
+          <Link to="/test">
             <button
               {...animatedItem[2]}
               type="button"
