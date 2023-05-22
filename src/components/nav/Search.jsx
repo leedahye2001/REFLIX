@@ -101,22 +101,22 @@ import NoContentDetail from "../content/NoContentDetail";
 
 const ContentList = ({ contents }) => {
   const [clicked, setClicked] = useState();
-  const handleCardClick = (id) => {
-    setClicked(contents.find((el) => el.id === id));
+  const navigate = useNavigate();
+
+  const handleCardClick = (contentId, category) => {
+    navigate(`/contents/detail/${contentId}/${category}`);
   };
 
   if (!contents) return;
 
   return contents.map((content) => {
     return (
-      <StyledLink
-      // to={{
-      //   pathname: `/contents/detail/?${content.contentId}`,
-      // }}
-      >
+      <StyledLink>
         <CardContainer
           key={content.contentsId}
-          onClick={() => handleCardClick(content.id)}
+          onClick={() =>
+            handleCardClick(content.contentsId, content.contentsCategory)
+          }
         >
           <img src={content.contentImageUrl} alt="content poster" />
           <UserInfo>
@@ -125,7 +125,6 @@ const ContentList = ({ contents }) => {
               {content.contentsCategory} · {content.year}
             </Info>
           </UserInfo>
-          {/* {clicked && <DetailPage clicked={clicked} setClicked={setClicked} />} */}
         </CardContainer>
       </StyledLink>
     );

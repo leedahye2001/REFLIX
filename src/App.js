@@ -27,23 +27,27 @@ const App = () => {
         {user ? (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/contents/detail/:id" element={<ContentDetail />} />
+            <Route
+              path="/contents/detail/:contentId/:category"
+              element={<ContentDetail />}
+            />
             {/* <Route path="/contentdetail" element={<ContentDetail />} /> */}
+            <Route path="/test" element={<Test />} />
             <Route path="/mypage/:id" element={<MyPage />} />
             <Route path="/profile/:id" element={<Profile />} />
-            {/* <Route path="/recommendlist" element={<RecommendList />} /> */}
+            <Route path="/recommendlist" element={<RecommendList />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         ) : (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            {/* <Route path="/mypage" element={<MyPage />} />
-            <Route path="/profile" element={<Profile />} /> */}
             <Route path="/search" element={<SearchResult />} />
-            <Route path="/contentdetail" element={<ContentDetail />} />
+            <Route
+              path="/contents/detail/:contentId/:category"
+              element={<ContentDetail />}
+            />
             <Route path="/test" element={<Test />} />
-            <Route path="/test/:id" element={<Test />} />
-            {/* <Route path="/test" element={<Test />} />
-            <Route path="/test/:id" element={<Test />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/recommendlist" element={<RecommendList />} />
