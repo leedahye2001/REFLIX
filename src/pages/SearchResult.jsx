@@ -134,7 +134,7 @@ const SearchResult = ({ contents }) => {
         -translate-x-1/2"
       >
         <ContentWrapper>
-          {/* {search ? <ContentList contents={contents} /> : <NoContentDetail />} */}
+          {search ? <ContentList contents={contents} /> : <NoContentDetail />}
           {/* <ContentList contents={contents} /> */}
         </ContentWrapper>
       </div>

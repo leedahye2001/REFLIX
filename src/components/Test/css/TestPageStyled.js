@@ -6,11 +6,12 @@ const TestMainPage = styled.div`
   max-width: 1000px;
   margin: 15vh auto;
   text-align: center;
-
-  .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
 `;
-export { TestMainPage };
+
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export { TestMainPage, ButtonWrapper };

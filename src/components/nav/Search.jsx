@@ -171,7 +171,7 @@ const Search = () => {
         />
       </SearchBarWrapper>
       <ContentWrapper>
-        {search ? <ContentList contents={contents} /> : ""}
+        {/* {search ? <ContentList contents={contents} /> : <NoContentDetail />} */}
       </ContentWrapper>
     </>
   );
