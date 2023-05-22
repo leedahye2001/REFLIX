@@ -217,17 +217,16 @@ const TestPage = () => {
           .then((response) => {
             // console.log(response);
             if (response.status === 200) {
-              //   const info = response.data;
               if (response.data) {
                 setResponseData(response.data);
                 console.log(response.data);
 
                 alert("성공적으로 매칭되었습니다!");
                 navigate("/recommendlist", {
-                  state: { result: last },
+                  state: response.data,
                 });
               } else {
-                console.log("데이저가 존재하지 않습니다.");
+                console.log("데이터가 존재하지 않습니다.");
                 alert("데이터 업슴");
               }
             } else {
