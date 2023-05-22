@@ -72,7 +72,7 @@ const Home = () => {
           /> */}
 
           <div>
-            <h1 className="flex font-black text-white text-5xl opacity-90">
+            <h1 className="flex font-black text-white text-6xl opacity-90">
               {state.title}
               <Typewriter
                 options={{
@@ -91,7 +91,7 @@ const Home = () => {
               type="button"
               className="mt-[55px]
               text-white bg-[#F57B00] hover:bg-orange-700
-                      font-semibold rounded-md text-xl px-10 py-4 text-center"
+              font-semibold rounded-md text-xl px-10 py-4 text-center"
             >
               START
             </button>
@@ -109,7 +109,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div>{/* <p {...animatedItem[0]}>dummy</p> */}</div>
+      <div>
+        <p {...animatedItem[0]}>dummy</p>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { Background } from "../../css/Background";
 import RecommendList from "../../pages/RecommendList";
 import Button from "./Button";
 import Content from "./Content";
-import { TestMainPage } from "./css/TestPageStyled";
+import { Buttons, ButtonWrapper, TestMainPage } from "./css/TestPageStyled";
 import Loading from "./Loading";
 import PageSection from "./PageSection";
 
@@ -220,20 +220,20 @@ const TestPage = () => {
               if (response.data) {
                 setResponseData(response.data);
                 console.log(response.data);
-
-                alert("성공적으로 매칭되었습니다!");
                 navigate("/recommendlist", {
                   state: response.data,
                 });
               } else {
                 console.log("데이터가 존재하지 않습니다.");
-                alert("데이터 업슴");
+                alert("데이터가 존재하지 않습니다.");
+                return navigate("/");
               }
             } else {
               console.log("응답 상태 코드:", response.status);
               alert(
                 "응답을 성공적으로 처리하지 못했습니다. 다시 시도해주세요."
               );
+              return navigate("/");
             }
           })
           .catch((err) => {
@@ -298,9 +298,9 @@ const TestPage = () => {
           )}
           {page === undefined && <Loading />}
           {page !== undefined && (
-            <div className="buttons">
+            <ButtonWrapper>
               <Button
-                //   styles={`btn-md ${temp.size === 0 && `btn-red`}`}
+                styles={`btn-md ${temp.size === 0 && `btn-red`}`}
                 onClick={handleNone}
               >
                 모르겠어요
@@ -309,12 +309,12 @@ const TestPage = () => {
                 {pageid.indexOf(page) + 1} / 4
               </div>
               <Button
-                //   styles={`btn-md ${temp.size !== 0 && `btn-green`}`}
+                styles={`btn-md ${temp.size !== 0 && `btn-white`}`}
                 onClick={handleDone}
               >
                 선택 완료
               </Button>
-            </div>
+            </ButtonWrapper>
           )}
         </TestMainPage>
         {/* {responseData && <RecommendList data={responseData} />} */}
