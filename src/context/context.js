@@ -1,5 +1,6 @@
 import { getUserByToken } from "../apis/user";
 import { createContext, useReducer, useEffect, useContext } from "react";
+import axios from "axios";
 
 export const UserStateContext = createContext(null);
 export const UserDispatchContext = createContext(null);

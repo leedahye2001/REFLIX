@@ -1,90 +1,3 @@
-// import { IoSearch } from "react-icons/io5";
-// import { useNavigate } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import { SearchBar, SearchBarWrapper } from "../../css/Search";
-// import {
-//   CardContainer,
-//   ContentWrapper,
-//   Info,
-//   StyledLink,
-//   Title,
-//   UserInfo,
-// } from "../../css/SearchResult";
-// import NoContentDetail from "../content/NoContentDetail";
-
-// const ContentList = ({ contents }) => {
-//   const [clicked, setClicked] = useState();
-//   const handleCardClick = (id) => {
-//     setClicked(contents.find((el) => el.id === id));
-//   };
-
-//   if (!contents) {
-//     return <div>로딩 중 ...</div>;
-//   }
-
-//   return contents.map((content) => {
-//     return (
-//       <StyledLink
-//       // to={{
-//       //   pathname: `/contents/detail/?${
-//       //     content.contentId
-//       //   }&${content.category.toLowerCase()}`,
-//       // }}
-//       >
-//         <CardContainer
-//           key={content.contentsId}
-//           onClick={() => handleCardClick(content.id)}
-//         >
-//           <img src={content.contentImageUrl} alt="content poster" />
-//           <UserInfo>
-//             <Title>{content.contentName}</Title>
-//             <Info>
-//               {content.media_type} · {content.year}
-//             </Info>
-//           </UserInfo>
-//           {/* {clicked && <DetailPage clicked={clicked} setClicked={setClicked} />} */}
-//         </CardContainer>
-//       </StyledLink>
-//     );
-//   });
-// };
-
-// const Search = ({ onSearch }) => {
-//   const [search, setSearch] = useState("");
-
-//   // const [contents, setContents] = useState(null);
-//   const navigate = useNavigate();
-//   const handleClick = () => {
-//     navigate("/search");
-//   };
-
-//   const handleInputChange = (e) => {
-//     setSearch(e.target.value);
-//   };
-
-//   useEffect(() => {
-//     onSearch(search);
-//   }, [search, onSearch]);
-
-//   return (
-//     <>
-//       <SearchBarWrapper onClick={() => handleClick()}>
-//         <IoSearch size="40" color="#B0B0B0" style={{ padding: 10 }} />
-//         <SearchBar
-//           type="search"
-//           placeholder="찾고자 하는 컨텐츠를 검색하세요."
-//           onChange={handleInputChange}
-//         />
-//       </SearchBarWrapper>
-//       {/* <ContentWrapper>
-//         {search ? <ContentList contents={contents} /> : <NoContentDetail />}
-//       </ContentWrapper> */}
-//     </>
-//   );
-// };
-
-// export default Search;
-
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -94,39 +7,126 @@ import {
   ContentWrapper,
   Info,
   StyledLink,
+  StyledWrapper,
   Title,
   UserInfo,
 } from "../../css/SearchResult";
 import NoContentDetail from "../content/NoContentDetail";
+import SearchResult from "../../pages/SearchResult";
+import SearchList from "../../pages/SearchList";
 
-const ContentList = ({ contents }) => {
-  const [clicked, setClicked] = useState();
-  const navigate = useNavigate();
+// const ContentList = ({ contents }) => {
+//   const navigate = useNavigate();
 
-  const handleCardClick = (contentId, category) => {
-    navigate(`/contents/detail/${contentId}/${category}`);
-  };
+//   const handleCardClick = (contentId, category, name) => {
+//     navigate(`/contents/detail/${contentId}/${category}?contentname=${name}`);
+//   };
 
-  if (!contents) return;
+//   if (!contents) return null;
+
+//   return contents.map((content) => {
+//     return (
+//       <StyledWrapper
+//         key={content.contentsId}
+//         onClick={() =>
+//           handleCardClick(
+//             content.contentsId,
+//             content.contentsCategory,
+//             content.name
+//           )
+//         }
+//       >
+//         <CardContainer>
+//           <img src={content.imageUrl} alt="content poster" />
+//           <UserInfo>
+//             <Title>{content.name}</Title>
+//             <Info>
+//               {content.contentsCategory} · {content.year}
+//             </Info>
+//           </UserInfo>
+//         </CardContainer>
+//       </StyledWrapper>
+//     );
+//   });
+// };
+
+// const Search = () => {
+//   const [search, setSearch] = useState("");
+//   const [contents, setContents] = useState(null);
+//   const navigate = useNavigate();
+//   const handleInputChange = (e) => {
+//     setSearch(e.target.value);
+//   };
+
+//   const handleClick = () => {
+//     navigate("/search");
+//   };
+
+//   useEffect(() => {
+//     const getItems = async () => {
+//       return await fetch(`/contents/search?q=${search}`)
+//         .then((res) => {
+//           if (!res.ok) {
+//             return new Promise.reject("no found");
+//           }
+//           return res.json();
+//         })
+//         .then((list) => {
+//           console.log(list);
+//           setContents(list);
+//         })
+//         .catch((err) => console.error(err));
+//     };
+//     if (search) getItems();
+//   }, [search]);
+
+//   const handleCardClick = (contentId, category, name) => {
+//     setContents(null); // 컨텐츠를 null로 설정하여 ContentList를 사라지게 함
+//     navigate(`/contents/detail/${contentId}/${category}?contentname=${name}`);
+//   };
+
+//   return (
+//     <>
+//       <SearchBarWrapper onClick={handleClick}>
+//         <IoSearch size="40" color="#B0B0B0" style={{ padding: 10 }} />
+//         <SearchBar
+//           type="search"
+//           placeholder="검색을 원하시면 여기를 눌러주세요."
+//           onChange={handleInputChange}
+//         />
+//       </SearchBarWrapper>
+//       {contents && <ContentList contents={contents} />}
+//     </>
+//   );
+// };
+
+// export default Search;
+
+const ContentList = ({ contents, handleCardClick }) => {
+  if (!contents) return null;
 
   return contents.map((content) => {
     return (
-      <StyledLink>
-        <CardContainer
-          key={content.contentsId}
-          onClick={() =>
-            handleCardClick(content.contentsId, content.contentsCategory)
-          }
-        >
-          <img src={content.contentImageUrl} alt="content poster" />
+      <StyledWrapper
+        key={content.contentsId}
+        onClick={() =>
+          handleCardClick(
+            content.contentsId,
+            content.contentsCategory,
+            content.name
+          )
+        }
+      >
+        <CardContainer>
+          <img src={content.imageUrl} alt="content poster" />
           <UserInfo>
-            <Title>{content.contentName}</Title>
+            <Title>{content.name}</Title>
             <Info>
               {content.contentsCategory} · {content.year}
             </Info>
           </UserInfo>
         </CardContainer>
-      </StyledLink>
+      </StyledWrapper>
     );
   });
 };
@@ -135,12 +135,17 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const [contents, setContents] = useState(null);
   const navigate = useNavigate();
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   const handleClick = () => {
     navigate("/search");
   };
 
-  const handleInputChange = (e) => {
-    setSearch(e.target.value);
+  const handleCardClick = (contentId, category, name) => {
+    setContents(null); // 컨텐츠를 null로 설정하여 ContentList를 사라지게 함
+    navigate(`/contents/detail/${contentId}/${category}?contentname=${name}`);
   };
 
   useEffect(() => {
@@ -153,6 +158,7 @@ const Search = () => {
           return res.json();
         })
         .then((list) => {
+          console.log(list);
           setContents(list);
         })
         .catch((err) => console.error(err));
@@ -162,17 +168,17 @@ const Search = () => {
 
   return (
     <>
-      <SearchBarWrapper onClick={() => handleClick()}>
+      <SearchBarWrapper onClick={handleClick}>
         <IoSearch size="40" color="#B0B0B0" style={{ padding: 10 }} />
         <SearchBar
           type="search"
-          placeholder="찾고자 하는 컨텐츠를 검색하세요."
+          placeholder="검색을 원하시면 여기를 눌러주세요."
           onChange={handleInputChange}
         />
       </SearchBarWrapper>
-      <ContentWrapper>
-        {/* {search ? <ContentList contents={contents} /> : <NoContentDetail />} */}
-      </ContentWrapper>
+      {contents && (
+        <ContentList contents={contents} handleCardClick={handleCardClick} />
+      )}
     </>
   );
 };

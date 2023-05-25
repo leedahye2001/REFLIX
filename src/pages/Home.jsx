@@ -109,9 +109,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div>
-        <p {...animatedItem[0]}>dummy</p>
-      </div>
+      <div>{/* <p {...animatedItem[0]}>dummy</p> */}</div>
     </div>
   );
 };

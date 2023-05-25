@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { BsPersonHeart, BsPersonXFill } from "react-icons/bs";
 import styled from "styled-components";
@@ -27,11 +28,26 @@ const Bookmark = styled.button`
   }
 `;
 
-const BookmarkButton = ({ children, styles }) => {
+const BookmarkButton = ({ children, styles, contentId, category }) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
     setIsActive((prevState) => !prevState);
+    const flag = isActive ? 0 : 1;
+
+    axios
+      .post(
+        `/contents/like?contentId=${contentId}&category=${category}&flag=${flag}`
+      )
+
+      .then((response) => {
+        // API 호출에 대한 응답 처리
+        console.log("API 호출 성공");
+      })
+      .catch((error) => {
+        // API 호출 중 오류가 발생한 경우에 대한 처리
+        console.log("API 호출 중 오류 발생", error);
+      });
   };
 
   return (

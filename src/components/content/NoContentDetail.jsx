@@ -24,7 +24,7 @@ const NoContentDetail = () => {
   return (
     <NoproductTextWrapper>
       <FaRegSadTear />
-      <p>서버와 연결되지 않았습니다.</p>
+      <p>존재하는 데이터가 없습니다.</p>
     </NoproductTextWrapper>
   );
 };
