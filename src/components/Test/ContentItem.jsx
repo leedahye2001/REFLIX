@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContentItem = ({ image, title, id, onClick, simir, genre, year }) => {
+const ContentItem = ({ image, title, onClick, simir, genre, year }) => {
   return (
     <>
       <div className="grid grid-rows-1" onClick={onClick}>

@@ -13,35 +13,11 @@ const RecommendList = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const data = location.state;
-  const [whole, setWhole] = useState([]);
+
   const scrollRef = useRef(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState();
 
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   console.log("state", location.state.result);
-
-  //   if (location.state) {
-  //     // setData(location.state.part.slice(0, 8));
-  //     setData(location.state);
-  //     setWhole(location.state.whole);
-  //   } else {
-  //     axios
-  //       .post("/contents/submit", {
-  //         // email: sessionStorage.getItem("email"),
-  //       })
-  //       .then((res) => {
-  //         setWhole(res.data.data);
-  //         return res.data.data;
-  //       })
-  //       .then((res) => res.slice(0, 8))
-  //       .then((res) => {
-  //         setData(res);
-  //       });
-  //   }
-  // }, [location.state]);
   const throttle = (func, ms) => {
     let throttled = false;
     return (...args) => {
@@ -120,10 +96,7 @@ const RecommendList = () => {
           )}
           <br />
 
-          <div
-            // onMouseOver={onMouseOver}
-            className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]"
-          >
+          <div className="grid grid-cols-1 mx-auto laptop:w-[800px] pt-[70px]">
             {data ? (
               <ScrollSection
                 ref={scrollRef}

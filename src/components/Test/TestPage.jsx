@@ -1,12 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Background } from "../../css/Background";
-import RecommendList from "../../pages/RecommendList";
 import Button from "./Button";
-import Content from "./Content";
-import { Buttons, ButtonWrapper, TestMainPage } from "./css/TestPageStyled";
-import Loading from "./Loading";
+import { ButtonWrapper, TestMainPage } from "./css/TestPageStyled";
+import Loading from "../content/Loading";
 import PageSection from "./PageSection";
 
 const years = [
@@ -328,7 +325,6 @@ const TestPage = () => {
             </ButtonWrapper>
           )}
         </TestMainPage>
-        {/* {responseData && <RecommendList data={responseData} />} */}
       </div>
     </>
   );

@@ -1,18 +1,10 @@
-import {
-  Component,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useLayoutEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Logo from "../../assets/images/reflex_logo_trans.png";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useUserDispatch, useUserState } from "../../context/context";
 import Search from "./Search";
 import { NavButton, NavMenu } from "../../css/Header";
-import SearchResult from "../../pages/SearchResult";
 
 const Header = () => {
   const location = useLocation();

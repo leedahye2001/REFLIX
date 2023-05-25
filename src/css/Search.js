@@ -5,8 +5,6 @@ const SearchBarWrapper = styled.div`
   align-items: center;
   width: 50%;
   background-color: #3a3a3a;
-  /* border-width: 2px;
-  border-color: #dcdcdc; */
   border-radius: 15px;
 
   @media (max-width: 767px) {

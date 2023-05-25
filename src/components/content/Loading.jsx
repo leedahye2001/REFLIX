@@ -1,7 +1,7 @@
 import Spinner from "../../assets/images/Spinner.svg";
 import React from "react";
-import { MainTitle } from "./css/PageSectionStyled";
-import { LoadinMain } from "./css/LoadingStyled";
+import { MainTitle } from "../Test/css/PageSectionStyled";
+import { LoadinMain } from "../Test/css/LoadingStyled";
 
 const Loading = () => {
   return (

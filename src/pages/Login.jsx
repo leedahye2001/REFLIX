@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { loginUser } from "../apis/user";
 import { Link, useNavigate } from "react-router-dom";
 import loginBG from "../assets/images/kids.mp4";
-import { useUserState, useUserDispatch } from "../context/context";
+import { useUserDispatch } from "../context/context";
 import {
   Account,
   Block,
@@ -14,7 +13,6 @@ import { LoginButton, LoginWrapper, LostPassword } from "../css/LoginStyle";
 import axios from "axios";
 
 const Login = () => {
-  const { userList } = useUserState();
   const dispatch = useUserDispatch();
 
   const navigate = useNavigate();
