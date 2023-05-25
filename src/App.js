@@ -20,6 +20,7 @@ import Test from "./pages/Test";
 
 const App = () => {
   const { user } = useUserState();
+
   return (
     <div>
       <Header />
@@ -27,11 +28,11 @@ const App = () => {
         {user ? (
           <Routes>
             <Route path="/" element={<Home />} exact />
+            <Route path="/search" element={<SearchResult />} />
             <Route
               path="/contents/detail/:contentId/:category"
               element={<ContentDetail />}
             />
-            {/* <Route path="/contentdetail" element={<ContentDetail />} /> */}
             <Route path="/test" element={<Test />} />
             <Route path="/mypage/:id" element={<MyPage />} />
             <Route path="/profile/:id" element={<Profile />} />
@@ -50,7 +51,7 @@ const App = () => {
             <Route path="/test" element={<Test />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/recommendlist" element={<RecommendList />} />
+            {/* <Route path="/recommendlist" element={<RecommendList />} /> */}
           </Routes>
         )}
       </div>

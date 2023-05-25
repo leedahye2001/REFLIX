@@ -1,76 +1,5 @@
-// import { useNavigate } from "react-router-dom";
-// import ContentList from "../components/nav/Search";
-// import { useEffect, useState } from "react";
-// import { IoSearch } from "react-icons/io5";
-// import { Background } from "../css/Background";
-// import NoContentDetail from "../components/content/NoContentDetail";
-// import {
-//   CardContainer,
-//   ContentWrapper,
-//   Info,
-//   MainWrapper,
-//   StyledLink,
-//   Title,
-//   UserInfo,
-// } from "../css/SearchResult";
-// import { SearchBar, SearchBarWrapper } from "../css/Search";
-// import Search from "../components/nav/Search";
-
-// const SearchResult = () => {
-//   const [search, setSearch] = useState("");
-//   const [contents, setContents] = useState(null);
-//   const navigate = useNavigate();
-//   const handleClick = () => {
-//     navigate("/search");
-//   };
-
-//   const handleInputChange = (e) => {
-//     setSearch(e.target.value);
-//   };
-//   const handleSearch = (value) => {
-//     setSearch(value);
-//   };
-
-//   useEffect(() => {
-//     const getSearchContent = async () => {
-//       return await fetch(`/contents/search?q=${search}`)
-//         .then((res) => {
-//           if (!res.ok) {
-//             return new Promise.reject("no found");
-//           }
-//           return res.json();
-//         })
-//         .then((list) => {
-//           setContents(list);
-//         })
-//         .catch((err) => console.error(err));
-//     };
-//     if (search) getSearchContent();
-//   }, [search]);
-
-//   return (
-//     <div>
-//       <Background />
-//       <div
-//         className="text-center flex-cols z-1
-//         absolute
-//         top-[15%]
-//         left-[50%]
-//         -translate-x-1/2"
-//       >
-//         <Search onSearch={handleSearch} />
-//         <ContentWrapper>
-//           {search ? <ContentList contents={contents} /> : <NoContentDetail />}
-//         </ContentWrapper>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SearchResult;
-
 import { useNavigate } from "react-router-dom";
-import ContentList from "../components/nav/Search";
+// import ContentList from "../components/nav/Search";
 import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { Background } from "../css/Background";
@@ -79,65 +8,112 @@ import {
   CardContainer,
   ContentWrapper,
   Info,
-  MainWrapper,
-  StyledLink,
+  StyledWrapper,
   Title,
   UserInfo,
 } from "../css/SearchResult";
-import { SearchBar, SearchBarWrapper } from "../css/Search";
+import { SearchResultBar, SearchBarResultWrapper } from "../css/Search";
+import { TestMainPage } from "../components/Test/css/TestPageStyled";
 import Search from "../components/nav/Search";
+import SearchList from "./SearchList";
 
 // const ContentList = ({ contents }) => {
 //   const [clicked, setClicked] = useState();
-//   const handleCardClick = (id) => {
-//     setClicked(contents.find((el) => el.id === id));
+//   const navigate = useNavigate();
+
+//   const handleCardClick = (contentId, category, name) => {
+//     navigate(`/contents/detail/${contentId}/${category}?contentname=${name}`);
 //   };
 
 //   if (!contents) return;
+
 //   return contents.map((content) => {
 //     return (
-//       <StyledLink
-//       // to={{
-//       //   pathname: `/contents/detail/?${
-//       //     content.contentId
-//       //   }&${content.category.toLowerCase()}`,
-//       // }}
+//       <StyledWrapper
+//         key={content.contentsId}
+//         onClick={() =>
+//           handleCardClick(
+//             content.contentsId,
+//             content.contentsCategory,
+//             content.name
+//           )
+//         }
 //       >
-//         <CardContainer
-//           key={content.contentsId}
-//           onClick={() => handleCardClick(content.id)}
-//         >
-//           <img src={content.contentImageUrl} alt="content poster" />
+//         <CardContainer>
+//           <img src={content.imageUrl} alt="content poster" />
 //           <UserInfo>
-//             <Title>{content.contentName}</Title>
+//             <Title>{content.name}</Title>
 //             <Info>
-//               {content.media_type} · {content.year}
+//               {content.contentsCategory} · {content.year}
 //             </Info>
 //           </UserInfo>
-//           {/* {clicked && <DetailPage clicked={clicked} setClicked={setClicked} />} */}
 //         </CardContainer>
-//       </StyledLink>
+//       </StyledWrapper>
 //     );
 //   });
 // };
 
-const SearchResult = ({ contents }) => {
-  const [search, setSearch] = useState("");
+// const SearchNew = () => {
+//   const [search, setSearch] = useState("");
+//   const [contents, setContents] = useState(null);
+//   const navigate = useNavigate();
+
+//   const handleClick = () => {
+//     navigate("/search");
+//   };
+
+//   const handleInputChange = (e) => {
+//     setSearch(e.target.value);
+//   };
+
+//   useEffect(() => {
+//     const getItems = async () => {
+//       return await fetch(`/contents/search?q=${search}`)
+//         .then((res) => {
+//           if (!res.ok) {
+//             return new Promise.reject("no found");
+//           }
+//           return res.json();
+//         })
+//         .then((list) => {
+//           console.log(list);
+//           setContents(list);
+//         })
+//         .catch((err) => console.error(err));
+//     };
+//     if (search) getItems();
+//   }, [search]);
+
+//   return (
+//     <>
+//       <SearchBarResultWrapper onClick={handleClick}>
+//         <IoSearch size="40" color="#B0B0B0" style={{ padding: 10 }} />
+//         <SearchResultBar
+//           type="search"
+//           placeholder="콘텐츠 제목을 입력하세요."
+//           onChange={handleInputChange}
+//         />
+//       </SearchBarResultWrapper>
+//       <ContentWrapper>
+//         {/* {contents ? <ContentList contents={contents} /> : <NoContentDetail />} */}
+//       </ContentWrapper>
+//     </>
+//   );
+// };
+
+// const SearchResult = () => {
+//   return (
+//     <div>
+//       <TestMainPage>
+//         <Search />
+//       </TestMainPage>
+//     </div>
+//   );
+// };
+const SearchResult = () => {
   return (
     <div>
       <Background />
-      <div
-        className="text-center flex-cols z-1
-        absolute
-        top-[15%]
-        left-[50%]
-        -translate-x-1/2"
-      >
-        <ContentWrapper>
-          {search ? <ContentList contents={contents} /> : <NoContentDetail />}
-          {/* <ContentList contents={contents} /> */}
-        </ContentWrapper>
-      </div>
     </div>
   );
 };

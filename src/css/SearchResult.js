@@ -21,7 +21,7 @@ const SearchBarWrapper = styled.div`
   border-radius: 5px;
 
   @media (max-width: 767px) {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -30,7 +30,7 @@ const SearchBar = styled.input`
   margin: 20px 20px 20px 20px;
   border-radius: 5px;
   font-size: 17px;
-  width: 80%;
+  width: 50%;
   background-color: #3a3a3a;
   :focus {
     outline: none;
@@ -40,7 +40,6 @@ const SearchBar = styled.input`
 
 const CardContainer = styled.div`
   display: flex;
-
   justify-content: flex-start;
   padding: 10px;
   margin: 10px 0 10px 0;
@@ -64,41 +63,14 @@ const Info = styled.span`
   font-weight: 200;
   color: #98a4b7;
 `;
-// const StyledLink = styled(Link)`
-//   display: block;
-//   text-decoration: none;
-//   color: white;
-//   display: flex;
 
-//   width: 50%;
-//   justify-content: flex-start;
-//   padding: 10px;
-//   margin: 10px 0 10px 0;
-//   transition: all ease 0.2s;
-//   border-radius: 10px;
-//   /* background-color: #3a3a3a; */
-//   :hover {
-//     transform: scale(1.03);
-//     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
-//   }
-
-//   img {
-//     background-color: #3a3a3a;
-//     width: 70px;
-//     border-radius: 3px;
-//   }
-//   @media (max-width: 767px) {
-//     width: 80%;
-//   }
-// `;
-
-const StyledLink = styled.div`
+const StyledWrapper = styled.div`
   display: block;
   text-decoration: none;
   color: white;
   display: flex;
 
-  width: 50%;
+  width: 100%;
   justify-content: flex-start;
   padding: 10px;
   margin: 10px 0 10px 0;
@@ -116,7 +88,7 @@ const StyledLink = styled.div`
     border-radius: 3px;
   }
   @media (max-width: 767px) {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -129,5 +101,5 @@ export {
   UserInfo,
   Title,
   Info,
-  StyledLink,
+  StyledWrapper,
 };

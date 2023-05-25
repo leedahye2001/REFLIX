@@ -5,7 +5,7 @@ import {
   BsPersonXFill,
   BsPlayCircle,
 } from "react-icons/bs";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { truncate } from "../components/util";
 import { ScrollSection } from "../css/ScrollSectionStyle";
 import axios from "axios";
@@ -16,6 +16,8 @@ const ContentDetail = () => {
   const { contentId, category } = useParams();
   const [content, setContent] = useState(null);
   const [contentInfo, setContentInfo] = useState(null);
+  const [genreInfo, setGenreInfo] = useState(null);
+  const navigate = useNavigate();
 
   const scrollRef = useRef(null);
   const [isDrag, setIsDrag] = useState(false);
@@ -70,6 +72,8 @@ const ContentDetail = () => {
       .get(
         `/contents/detail?contentId=${encodeURIComponent(
           contentId
+        )}&contentname=${encodeURIComponent(
+          contentname
         )}&category=${encodeURIComponent(category)}`
       )
       .then((response) => {
@@ -109,16 +113,44 @@ const ContentDetail = () => {
         console.log(err);
         // 에러 처리 로직 추가
       });
+
+    axios
+      .get(
+        `/contents/recommendcontents?ContentsId=${encodeURIComponent(
+          contentId
+        )}&contentname=${encodeURIComponent(
+          contentname
+        )}&category=${encodeURIComponent(category)}`
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          const genreInfo = response.data;
+          console.log(genreInfo);
+          setGenreInfo(genreInfo);
+        } else {
+          console.log("응답 상태 코드:", response.status);
+          // 에러 처리 로직 추가
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        // 에러 처리 로직 추가
+      });
   }, [contentId, category, location.search]);
+
+  const handleContentClick = (contentsId, category, name) => {
+    navigate(`/contents/detail/${contentsId}/${category}?contentname=${name}`);
+  };
 
   return (
     <>
       {content && (
         <div className="flex grid items-center">
           <div className="relative bg-black justify-center align-center px-10 laptop:px-20">
-            <div className="grid laptop:grid-cols-2 grid-cols-1 mx-auto laptop:w-[800px]">
+            <div className="grid laptop:grid-cols-2 grid-cols-1 mx-auto laptop:w-[800px] my-20">
               <img
                 src={content.contentImageUrl}
+                key={content.contentId}
                 className="block m-auto bg-gray-200 w-[50%] my-4 laptop:my-0 laptop:w-[100%] rounded-2xl"
                 alt={content.contentName}
               />
@@ -171,7 +203,7 @@ const ContentDetail = () => {
                   <p className="text-[#999] text-base font-bold pr-[10px]">
                     줄거리
                   </p>
-                  {null ? (
+                  {"" ? (
                     <span className="text-[#999] text-base">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
@@ -192,7 +224,11 @@ const ContentDetail = () => {
                   )}
                 </div>
                 <div className="flex flex-cols gap-4 mt-5">
-                  <BookmarkButton styles={`${`mark-pink`}`}>
+                  <BookmarkButton
+                    styles={`${`mark-pink`}`}
+                    contentId={contentId}
+                    category={category}
+                  >
                     최고예요
                   </BookmarkButton>
                   <BookmarkButton styles={`${`mark-sky`}`}>
@@ -215,7 +251,7 @@ const ContentDetail = () => {
                   onMouseLeave={onDragEnd}
                 >
                   {contentInfo.map((review) => (
-                    <div key={review.videoId} className="">
+                    <div key={review.contentsId}>
                       <a href={review.videoId} target="_blank" rel="noreferrer">
                         <div className="grid grid-rows-1">
                           <div className="w-[280px] relative">
@@ -240,6 +276,47 @@ const ContentDetail = () => {
                 </ScrollSection>
               ) : (
                 <h1 className="text-white text-xl">No Reviews</h1>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 mx-auto laptop:w-[800px]">
+              <h1 className="text-white text-4xl font-black pt-[100px] pb-[30px]">
+                💡 이런 콘텐츠를 추천해요!
+              </h1>
+              {genreInfo ? (
+                <ScrollSection
+                  ref={scrollRef}
+                  onMouseDown={onDragStart}
+                  onMouseMove={isDrag ? onThrottleDrageMove : null}
+                  onMouseUp={onDragEnd}
+                  onMouseLeave={onDragEnd}
+                >
+                  {genreInfo.map((genre) => (
+                    <div key={genre.contentsId}>
+                      <div className="grid grid-rows-1">
+                        <div className="w-[280px] relative">
+                          <img
+                            src={`${genre.imageUrl}`}
+                            alt={genre.name}
+                            className="rounded-xl"
+                            onClick={() =>
+                              handleContentClick(
+                                genre.contentsId,
+                                genre.contentsCategory,
+                                genre.name
+                              )
+                            }
+                          />
+                        </div>
+                        <p className="text-[#999] pt-2">
+                          {truncate(genre.name, 30)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </ScrollSection>
+              ) : (
+                <h1 className="text-white text-xl">No Contents</h1>
               )}
             </div>
           </div>

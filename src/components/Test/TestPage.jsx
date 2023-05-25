@@ -212,10 +212,23 @@ const TestPage = () => {
       last["keyword"] = Array.from(temp);
 
       setTimeout(() => {
+        const token = sessionStorage.getItem("access-token");
+
         axios
-          .post("/contents/submit", { result: last })
+          .post(
+            "/contents/submit",
+            {
+              result: last,
+            },
+            {
+              headers: {
+                Authorization: `Bearer- ${token}`,
+              },
+            }
+          )
           .then((response) => {
-            // console.log(response);
+            console.log(token);
+            console.log(response);
             if (response.status === 200) {
               if (response.data) {
                 setResponseData(response.data);
@@ -230,15 +243,13 @@ const TestPage = () => {
               }
             } else {
               console.log("응답 상태 코드:", response.status);
-              alert(
-                "응답을 성공적으로 처리하지 못했습니다. 다시 시도해주세요."
-              );
+              alert("존재하는 데이터가 없습니다. 다시 시도해주세요.");
               return navigate("/");
             }
           })
           .catch((err) => {
             console.log(err);
-            alert("처리 중 문제가 발생했습니다. 다시 시도해주세요.");
+            alert("응답을 성공적으로 처리하지 못했습니다. 다시 시도해주세요.");
             return navigate("/");
           });
       }, 1000);

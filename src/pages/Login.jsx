@@ -36,19 +36,28 @@ const Login = () => {
     }
 
     axios
-      .post("/auth/login", {
-        email: email,
-        password: password,
-      })
+      .post(
+        "/auth/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer- ${localStorage.getItem("access-token")}`,
+          },
+        }
+      )
       .then((response) => {
-        localStorage.setItem("access-token", response.accessToken);
+        const token = response.data.accessToken;
+        localStorage.setItem("access-token", token);
         console.log(response);
         dispatch({
           type: "LOGIN",
           userId: email,
           userPw: password,
         });
-        if ((response.status = 200)) {
+        if (response.status === 200) {
           alert("성공적으로 로그인 되었습니다 !");
           return navigate("/");
         }

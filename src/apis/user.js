@@ -29,12 +29,24 @@ async function updateUser(password, name) {
     .then((data) => data);
 }
 
+// async function getUserByToken(token) {
+//   return await fetch("/auth/login", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//       token,
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => data);
+// }
+
 async function getUserByToken(token) {
   return await fetch("/auth/login", {
-    method: "GET",
+    method: "POST", // POST 메서드로 변경
     headers: {
       "Content-Type": "application/json",
-      token,
+      Authorization: `Bearer- ${token}`, // Authorization 헤더로 토큰 전달
     },
   })
     .then((res) => res.json())
