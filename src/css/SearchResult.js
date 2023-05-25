@@ -76,7 +76,6 @@ const StyledWrapper = styled.div`
   margin: 10px 0 10px 0;
   transition: all ease 0.2s;
   border-radius: 10px;
-  /* background-color: #3a3a3a; */
   :hover {
     transform: scale(1.03);
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);

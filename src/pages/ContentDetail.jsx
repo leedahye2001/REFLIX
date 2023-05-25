@@ -1,10 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  BsStarFill,
-  BsPersonHeart,
-  BsPersonXFill,
-  BsPlayCircle,
-} from "react-icons/bs";
+import { BsStarFill, BsPlayCircle } from "react-icons/bs";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { truncate } from "../components/util";
 import { ScrollSection } from "../css/ScrollSectionStyle";

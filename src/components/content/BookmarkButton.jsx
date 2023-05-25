@@ -8,7 +8,6 @@ const Bookmark = styled.button`
   min-width: 140px;
   weight: 30px;
   padding: 10px 20px 10px 20px;
-  /* height: 55px; */
   border: none;
   border-radius: 10px;
   margin-top: 30px;

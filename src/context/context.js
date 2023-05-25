@@ -1,6 +1,5 @@
 import { getUserByToken } from "../apis/user";
 import { createContext, useReducer, useEffect, useContext } from "react";
-import axios from "axios";
 
 export const UserStateContext = createContext(null);
 export const UserDispatchContext = createContext(null);
@@ -11,7 +10,7 @@ const initialUser = {
 };
 
 function userReducer(state, action) {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
     case "CREATE_USER":
       return {
