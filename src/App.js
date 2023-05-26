@@ -10,7 +10,6 @@ import MyPage from "./pages/MyPage";
 import ContentDetail from "./pages/ContentDetail";
 import { useUserState } from "./context/context";
 import RecommendList from "./pages/RecommendList";
-import SearchResult from "./pages/SearchResult";
 import Test from "./pages/Test";
 
 const App = () => {
@@ -23,7 +22,6 @@ const App = () => {
         {user ? (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/search" element={<SearchResult />} />
             <Route
               path="/contents/detail/:contentId/:category"
               element={<ContentDetail />}
@@ -38,7 +36,6 @@ const App = () => {
         ) : (
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/search" element={<SearchResult />} />
             <Route
               path="/contents/detail/:contentId/:category"
               element={<ContentDetail />}
