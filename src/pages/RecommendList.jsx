@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { ScrollSection } from "../css/ScrollSectionStyle";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import ContentItem from "../components/Test/ContentItem";
+import ContentItem from "../components/test/ContentItem";
 import { useUserState } from "../context/context";
 import { Background } from "../css/Background";
 import NoContentDetail from "../components/content/NoContentDetail";
