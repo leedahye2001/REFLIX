@@ -91,10 +91,15 @@
 
 ### 메인 화면
 
+![메인화면.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/add3e202-0880-4594-8bcc-4ea03e1792cc/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB.gif)
+
 ### 로그인
 
+![로그인.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/37af067d-8860-4e2a-884c-881c93bb4ae7/%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB.gif)
 
 ### 회원가입
+
+![회원가입.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6172e1a-0b72-433d-8285-f00c67c71c7e/%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8.gif)
 
 ### 마이페이지 및 로그아웃
 
