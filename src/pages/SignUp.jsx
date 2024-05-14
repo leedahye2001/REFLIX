@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useUserDispatch } from "../context/context";
 import {
   InputWrapper,
   InputIdWrapper,
   Block,
   MainWrapper,
-  VideoWrapper,
   SignUpWrapper,
   SignUpButton,
   Account,

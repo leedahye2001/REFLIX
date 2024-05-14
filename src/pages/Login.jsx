@@ -2,13 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useUserDispatch } from "../context/context";
-import {
-  Account,
-  Block,
-  InputWrapper,
-  MainWrapper,
-  VideoWrapper,
-} from "../css/SignUpStyle";
+import { Account, Block, InputWrapper, MainWrapper } from "../css/SignUpStyle";
 import { LoginButton, LoginWrapper, LostPassword } from "../css/LoginStyle";
 import axios from "axios";
 

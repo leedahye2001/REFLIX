@@ -1,6 +1,6 @@
 import React from "react";
 
-const contentItem = ({ image, title, onClick, simir, genre, year }) => {
+const ContentItem = ({ image, title, onClick, simir, genre, year }) => {
   return (
     <>
       <div className="grid grid-rows-1" onClick={onClick}>
@@ -17,4 +17,4 @@ const contentItem = ({ image, title, onClick, simir, genre, year }) => {
   );
 };
 
-export default contentItem;
+export default ContentItem;
