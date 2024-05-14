@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import loginBG from "../assets/images/kids.mp4";
+
 import { useUserDispatch } from "../context/context";
 import {
   Account,
@@ -83,10 +83,6 @@ const Login = () => {
 
   return (
     <MainWrapper>
-      <VideoWrapper>
-        <video src={loginBG} autoPlay loop muted />
-      </VideoWrapper>
-
       <LoginWrapper>
         <br />
         <h1>LOGIN</h1>
