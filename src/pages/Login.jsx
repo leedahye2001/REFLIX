@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Kids from "../assets/images/kids.png";
 import { useUserDispatch } from "../context/context";
 import { Account, Block, InputWrapper, MainWrapper } from "../css/SignUpStyle";
 import { LoginButton, LoginWrapper, LostPassword } from "../css/LoginStyle";
@@ -77,6 +77,8 @@ const Login = () => {
 
   return (
     <MainWrapper>
+      <Kids className="w-full" />
+
       <LoginWrapper>
         <br />
         <h1>LOGIN</h1>
