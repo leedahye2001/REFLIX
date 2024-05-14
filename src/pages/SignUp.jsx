@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserDispatch } from "../context/context";
+import Kids from "../assets/images/kids.png";
 import {
   InputWrapper,
   InputIdWrapper,
@@ -88,6 +89,11 @@ const SignUp = () => {
 
   return (
     <MainWrapper>
+      <img
+        src={Kids}
+        alt="Kids"
+        className="opacity-70 visible w-full object-cover"
+      />
       <SignUpWrapper>
         <br />
         <h1>SIGN UP</h1>

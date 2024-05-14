@@ -18,7 +18,11 @@ const Home = () => {
   return (
     <div>
       <div className="bg-black flex align-center">
-        <Movie className="opacity-70 visible w-full h-[700px] object-cover" />
+        <img
+          src={Movie}
+          alt="Movie"
+          className="opacity-70 visible w-full h-[700px] object-cover"
+        />
       </div>
 
       <div>

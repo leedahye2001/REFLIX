@@ -77,8 +77,11 @@ const Login = () => {
 
   return (
     <MainWrapper>
-      <Kids className="w-full" />
-
+      <img
+        src={Kids}
+        alt="Kids"
+        className="opacity-70 visible w-full h-[700px] object-cover"
+      />
       <LoginWrapper>
         <br />
         <h1>LOGIN</h1>
