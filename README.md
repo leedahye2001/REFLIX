@@ -2,16 +2,14 @@
 
 ## 🎬 프로젝트 소개
 
-### 설문을 통해 개인의 취향에 맞는 영상 콘텐츠와 리뷰 영상을 추천해 주며,
+### 설문을 통해 개인의 취향에 맞는 영상 콘텐츠와 리뷰 영상을 추천해 주며, 콘텐츠 검색 기능이 탑재된 반응형 웹 사이트
 
-콘텐츠 검색 기능이 탑재된 반응형 웹 사이트
+**기획 배경**
 
-> **기획 배경**
->
 > 릴스, 숏츠 등 숏폼을 소비하는 연령층이 많아지고 있는 요즘 사회를 반영하여 영화, 드라마 등을 압축한 리뷰 영상의 소비가 커지고 있다는 점을 핵심으로 짚어 ,이를 통해 영상 콘텐츠를 추천하고 리뷰 영상까지 추천해주는 서비스가 있으면 어떨까 하는 아이디어에서 이 프로젝트(RE:FLIX)를 기획하게 되었다.
 
-> **서비스 주요 기능**
->
+**서비스 주요 기능**
+
 > ✅ 4가지 설문을 바탕으로 한 콘텐츠 추천
 >
 > ✅ 검색 기능이 탑재
@@ -79,55 +77,60 @@
 
 ### 📌 Architecture
 
-![스크린샷 2023-05-25 오전 11.18.35.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a357ad6d-cc01-4367-93a6-4c2a27f6f0d2/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-05-25_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_11.18.35.png)
+<img width="794" alt="스크린샷 2023-05-23 오후 5 49 36" src="https://github.com/leedahye2001/REFLIX/assets/94473725/d971ba33-b2c1-426a-a6a6-327d162ab173">
 
 ### 📌 ERD
 
-![reflex.DBERD.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cb939e14-2d05-40be-a5d4-a9ca06e6ea2a/reflex.DBERD.png)
+![reflex DBERD](https://github.com/leedahye2001/REFLIX/assets/94473725/0261a0a5-5599-48b7-b29b-ab9a3fb6e7d6)
 
-## 🌈 시연(UI)
+## 🌈 시연(UI) - gif 확인 (https://www.notion.so/README-md-7772cc8a43dc4cebb211d16c66cbd451?pvs=4)
 
 ### 메인 화면
 
-![메인화면.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/add3e202-0880-4594-8bcc-4ea03e1792cc/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB.gif)
+<img width="1271" alt="메인" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/8bbbd248-d908-4468-9744-94c05c3d4941">
 
 ### 로그인
 
-![로그인.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/37af067d-8860-4e2a-884c-881c93bb4ae7/%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%B5%E1%86%AB.gif)
+<img width="1271" alt="로그인" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/859aee94-e819-4b8a-a841-26f9c0752365">
 
 ### 회원가입
 
-![회원가입.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6172e1a-0b72-433d-8285-f00c67c71c7e/%E1%84%92%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8.gif)
+<img width="1267" alt="회원가입" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/7ecf0706-bf7c-43d4-a7d9-147a2d76f0e8">
 
 ### 마이페이지 및 로그아웃
 
-![마이페이지-및-로그아웃.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c645b079-c5fd-4a5b-b792-fb48e8e73d08/%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5-%E1%84%86%E1%85%B5%E1%86%BE-%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%BA.gif)
+<img width="1267" alt="마이페이지" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/c2c496fb-73e7-42ff-9fb6-29432d4aa07d">
+<img width="1267" alt="로그아웃" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/1cef5f61-d001-4b8b-a293-279dd61b03fb">
 
 ### 설문 페이지(연도, 장르, 종류, 키워드)
 
-![설문-페이지.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/84ea4f64-951f-4a08-874f-94c7d44a99df/%E1%84%89%E1%85%A5%E1%86%AF%E1%84%86%E1%85%AE%E1%86%AB-%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.gif)
+<img width="1267" alt="연도" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/4c126764-394e-4117-afe6-00313c21eea8">
+<img width="1267" alt="장르" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/d48c5325-bbe3-4073-ba24-83adf084e90b">
+<img width="1268" alt="유형" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/966784ad-bcc9-46b3-ad3f-a3978dc44c32">
+<img width="1267" alt="키워드" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/92ae1881-dd1d-4df0-8a23-d8d6275ef660">
 
 ### 로딩 페이지
 
-![로딩.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f801b2a-a736-46a0-96db-c75ec8cfe1d4/%E1%84%85%E1%85%A9%E1%84%83%E1%85%B5%E1%86%BC.gif)
+<img width="1267" alt="로딩" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/078e3f39-c912-43e0-8ae5-266eeaff618d">
 
 ### 추천 리스트
 
-![리스트.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b66aad03-7f97-4f91-9f5c-101083a1e503/%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.gif)
+<img width="1267" alt="추천리스트" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/235362c5-ff76-458f-abf8-e8375a45f2bb">
 
-![추천리스트.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81a67fa1-196d-43b4-8c06-15d42ecad915/%E1%84%8E%E1%85%AE%E1%84%8E%E1%85%A5%E1%86%AB%E1%84%85%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.gif)
+![추천 목록](https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/ad1ea7a7-4a99-473b-ac20-8f33b8ce9360)
 
 ### 상세 페이지 (리뷰 영상, 콘텐츠 기반 추천 포함)
 
-![콘텐츠-클릭시-이동.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/712e4473-9d75-4348-a506-f9dfed74c25b/%E1%84%8F%E1%85%A9%E1%86%AB%E1%84%90%E1%85%A6%E1%86%AB%E1%84%8E%E1%85%B3-%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%A8%E1%84%89%E1%85%B5-%E1%84%8B%E1%85%B5%E1%84%83%E1%85%A9%E1%86%BC.gif)
+![상세페이지](https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/a28ee92d-112b-4d4e-8f11-dee943f1f693)
+![상세페이지2](https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/e89e867e-faa2-4548-9269-85d2ec793bf5)
 
-### 검색 기능
+### 반응형 페이지 및 검색 기능
 
-![검색.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/66390940-84f5-4590-9a3b-8e8e1b76eaf8/%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A2%E1%86%A8.gif)
+<img width="311" alt="반응형 및 검색" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/6f50ec46-6b05-40d1-bac6-3f4937783a5e">
 
 ### 리뷰 영상 클릭 시, 링크 이동
 
-![리뷰영상연결.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99c639f4-1ee4-451d-842e-71d730345ed8/%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%80%E1%85%A7%E1%86%AF.gif)
+<img width="379" alt="링크이동" src="https://github.com/KyungPookUnivProject/REFLIX/assets/94473725/83820777-2ed8-4102-9a56-2dd98f76dae0">
 
 ## 💻 개발 내용
 
@@ -161,3 +164,5 @@
 ## 🚩 기타문서
 
 ### 최종 발표자료
+
+https://www.youtube.com/watch?v=Hhhu_jQRbsc
