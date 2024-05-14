@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import mainMovie from "../assets/images/movie.png";
+import Movie from "../assets/images/movie.png";
 import UseScrollFadeIn from "../hooks/UseScrollFadeIn";
 import Typewriter from "typewriter-effect";
 
@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div>
       <div className="bg-black flex align-center">
-        <mainMovie className="opacity-70 visible w-full h-[700px] object-cover" />
+        <Movie className="opacity-70 visible w-full h-[700px] object-cover" />
       </div>
 
       <div>
